@@ -1,0 +1,907 @@
+{% extends "base.html" %}
+
+{% block title %}Methodology | Technical Deep Dive{% endblock %}
+
+{% block extra_css %}
+<style>
+    /* ===== WOW FACTOR ANIMATIONS & EFFECTS ===== */
+    
+    /* Parallax Hero */
+    .parallax-hero {
+        position: relative;
+        height: 100vh;
+        overflow: hidden;
+        display: flex;
+        align-items: center;
+        justify-content: center;
+        background: linear-gradient(135deg, var(--primary) 0%, var(--secondary) 100%);
+    }
+
+    .parallax-bg {
+        position: absolute;
+        top: 0;
+        left: 0;
+        width: 100%;
+        height: 100%;
+        background-image: url('../static/images/bg.jpeg');
+        background-size: cover;
+        background-position: center;
+        opacity: 0.15;
+        transform: translateZ(0);
+        will-change: transform;
+    }
+
+    .hero-content {
+        position: relative;
+        z-index: 10;
+        text-align: center;
+        color: white;
+        padding: 40px;
+        animation: fadeInUp 1s ease;
+    }
+
+    .hero-content h1 {
+        font-family: 'Playfair Display', serif;
+        font-size: 5rem;
+        font-weight: 800;
+        margin-bottom: 20px;
+        text-shadow: 0 10px 30px rgba(0, 0, 0, 0.3);
+        animation: glowPulse 3s ease-in-out infinite;
+    }
+
+    @keyframes glowPulse {
+        0%, 100% { text-shadow: 0 0 20px rgba(218, 165, 32, 0.5), 0 0 40px rgba(218, 165, 32, 0.3); }
+        50% { text-shadow: 0 0 30px rgba(218, 165, 32, 0.8), 0 0 60px rgba(218, 165, 32, 0.5); }
+    }
+
+    .hero-subtitle {
+        font-size: 1.5rem;
+        opacity: 0.95;
+        max-width: 800px;
+        margin: 0 auto 40px;
+        animation: fadeInUp 1.2s ease;
+    }
+
+    .scroll-indicator {
+        position: absolute;
+        bottom: 40px;
+        left: 50%;
+        transform: translateX(-50%);
+        animation: bounce 2s infinite;
+    }
+
+    @keyframes bounce {
+        0%, 20%, 50%, 80%, 100% { transform: translateX(-50%) translateY(0); }
+        40% { transform: translateX(-50%) translateY(-20px); }
+        60% { transform: translateX(-50%) translateY(-10px); }
+    }
+
+    /* Glass Morphism Cards */
+    .glass-card {
+        background: rgba(255, 255, 255, 0.1);
+        backdrop-filter: blur(20px);
+        border-radius: 24px;
+        border: 1px solid rgba(255, 255, 255, 0.2);
+        padding: 40px;
+        box-shadow: 0 8px 32px 0 rgba(0, 100, 0, 0.2);
+        transition: all 0.5s cubic-bezier(0.23, 1, 0.32, 1);
+        opacity: 0;
+        transform: translateY(50px);
+    }
+
+    .glass-card.visible {
+        opacity: 1;
+        transform: translateY(0);
+    }
+
+    .glass-card:hover {
+        transform: translateY(-10px) scale(1.02);
+        box-shadow: 0 20px 60px 0 rgba(0, 100, 0, 0.3);
+        background: rgba(255, 255, 255, 0.15);
+    }
+
+    /* Workflow Diagram */
+    .workflow-container {
+        position: relative;
+        padding: 80px 20px;
+        background: linear-gradient(180deg, #f8fafc 0%, #e2e8f0 100%);
+    }
+
+    .workflow-steps {
+        display: grid;
+        grid-template-columns: repeat(auto-fit, minmax(280px, 1fr));
+        gap: 40px;
+        max-width: 1400px;
+        margin: 0 auto;
+        position: relative;
+    }
+
+    .workflow-step {
+        position: relative;
+        opacity: 0;
+        transform: scale(0.8) rotateY(20deg);
+        transition: all 0.8s cubic-bezier(0.34, 1.56, 0.64, 1);
+    }
+
+    .workflow-step.visible {
+        opacity: 1;
+        transform: scale(1) rotateY(0);
+    }
+
+    .step-card {
+        background: white;
+        border-radius: 20px;
+        padding: 32px;
+        box-shadow: 0 10px 40px rgba(0, 100, 0, 0.1);
+        transition: all 0.4s ease;
+        position: relative;
+        overflow: hidden;
+    }
+
+    .step-card::before {
+        content: '';
+        position: absolute;
+        top: 0;
+        left: 0;
+        width: 100%;
+        height: 4px;
+        background: linear-gradient(90deg, var(--primary) 0%, var(--accent) 100%);
+        transform: scaleX(0);
+        transition: transform 0.6s ease;
+    }
+
+    .step-card:hover::before {
+        transform: scaleX(1);
+    }
+
+    .step-card:hover {
+        transform: translateY(-15px);
+        box-shadow: 0 25px 60px rgba(0, 100, 0, 0.2);
+    }
+
+    .step-number {
+        width: 70px;
+        height: 70px;
+        background: linear-gradient(135deg, var(--primary) 0%, var(--accent) 100%);
+        color: white;
+        border-radius: 50%;
+        display: flex;
+        align-items: center;
+        justify-content: center;
+        font-family: 'Playfair Display', serif;
+        font-size: 2rem;
+        font-weight: 700;
+        margin: 0 auto 20px;
+        position: relative;
+        z-index: 1;
+        animation: rotateIn 1s ease;
+    }
+
+    @keyframes rotateIn {
+        from {
+            transform: rotate(-360deg) scale(0);
+            opacity: 0;
+        }
+        to {
+            transform: rotate(0) scale(1);
+            opacity: 1;
+        }
+    }
+
+    .step-number::after {
+        content: '';
+        position: absolute;
+        width: 100%;
+        height: 100%;
+        border-radius: 50%;
+        background: linear-gradient(135deg, var(--primary) 0%, var(--accent) 100%);
+        z-index: -1;
+        animation: pulse 2s ease-in-out infinite;
+    }
+
+    @keyframes pulse {
+        0%, 100% { transform: scale(1); opacity: 1; }
+        50% { transform: scale(1.15); opacity: 0.7; }
+    }
+
+    .step-title {
+        font-family: 'Playfair Display', serif;
+        font-size: 1.5rem;
+        color: var(--primary);
+        margin-bottom: 16px;
+        text-align: center;
+    }
+
+    .step-description {
+        color: #666;
+        font-size: 0.95rem;
+        line-height: 1.7;
+        text-align: center;
+    }
+
+    .step-tech {
+        display: flex;
+        flex-wrap: wrap;
+        gap: 8px;
+        margin-top: 20px;
+        justify-content: center;
+    }
+
+    .tech-tag {
+        background: linear-gradient(135deg, var(--primary) 0%, var(--secondary) 100%);
+        color: white;
+        padding: 6px 14px;
+        border-radius: 50px;
+        font-size: 0.75rem;
+        font-weight: 600;
+        transition: all 0.3s ease;
+    }
+
+    .tech-tag:hover {
+        transform: scale(1.1) rotate(2deg);
+        box-shadow: 0 5px 15px rgba(0, 100, 0, 0.3);
+    }
+
+    /* Architecture Diagram Section */
+    .diagram-section {
+        padding: 100px 20px;
+        background: linear-gradient(135deg, var(--primary) 0%, var(--secondary) 100%);
+        position: relative;
+        overflow: hidden;
+    }
+
+    .diagram-section::before {
+        content: '';
+        position: absolute;
+        width: 500px;
+        height: 500px;
+        background: radial-gradient(circle, rgba(218, 165, 32, 0.2) 0%, transparent 70%);
+        border-radius: 50%;
+        top: -250px;
+        right: -250px;
+        animation: float 8s ease-in-out infinite;
+    }
+
+    @keyframes float {
+        0%, 100% { transform: translate(0, 0) rotate(0deg); }
+        33% { transform: translate(30px, -30px) rotate(120deg); }
+        66% { transform: translate(-20px, 20px) rotate(240deg); }
+    }
+
+    .diagram-container {
+        max-width: 1200px;
+        margin: 0 auto;
+        position: relative;
+        z-index: 10;
+    }
+
+    .diagram-image {
+        width: 100%;
+        max-width: 900px;
+        margin: 0 auto;
+        display: block;
+        border-radius: 24px;
+        box-shadow: 0 30px 80px rgba(0, 0, 0, 0.4);
+        transition: all 0.5s ease;
+        opacity: 0;
+        transform: perspective(1000px) rotateX(10deg);
+    }
+
+    .diagram-image.visible {
+        opacity: 1;
+        transform: perspective(1000px) rotateX(0deg);
+    }
+
+    .diagram-image:hover {
+        transform: perspective(1000px) rotateX(-2deg) scale(1.02);
+        box-shadow: 0 40px 100px rgba(0, 0, 0, 0.5);
+    }
+
+    /* Interactive Metrics */
+    .metrics-grid {
+        display: grid;
+        grid-template-columns: repeat(auto-fit, minmax(200px, 1fr));
+        gap: 24px;
+        margin-top: 60px;
+    }
+
+    .metric-box {
+        background: rgba(255, 255, 255, 0.1);
+        backdrop-filter: blur(10px);
+        border-radius: 16px;
+        padding: 24px;
+        text-align: center;
+        border: 1px solid rgba(255, 255, 255, 0.2);
+        transition: all 0.4s ease;
+        cursor: pointer;
+    }
+
+    .metric-box:hover {
+        background: rgba(255, 255, 255, 0.2);
+        transform: translateY(-10px) scale(1.05);
+        box-shadow: 0 20px 40px rgba(0, 0, 0, 0.3);
+    }
+
+    .metric-value {
+        font-family: 'Playfair Display', serif;
+        font-size: 3rem;
+        font-weight: 800;
+        color: var(--accent);
+        margin-bottom: 8px;
+        text-shadow: 0 2px 10px rgba(218, 165, 32, 0.5);
+    }
+
+    .metric-label {
+        color: white;
+        font-size: 0.9rem;
+        opacity: 0.95;
+        font-weight: 500;
+    }
+
+    /* Feature Engineering Showcase */
+    .feature-showcase {
+        padding: 80px 20px;
+        background: white;
+    }
+
+    .feature-grid {
+        display: grid;
+        grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
+        gap: 30px;
+        max-width: 1400px;
+        margin: 40px auto 0;
+    }
+
+    .feature-box {
+        background: linear-gradient(135deg, #f0fdf4 0%, #dcfce7 100%);
+        border-radius: 20px;
+        padding: 32px;
+        border-left: 4px solid var(--primary);
+        transition: all 0.4s cubic-bezier(0.175, 0.885, 0.32, 1.275);
+        opacity: 0;
+        transform: translateX(-50px);
+    }
+
+    .feature-box.visible {
+        opacity: 1;
+        transform: translateX(0);
+    }
+
+    .feature-box:hover {
+        transform: translateX(10px) scale(1.02);
+        box-shadow: -10px 20px 40px rgba(0, 100, 0, 0.15);
+    }
+
+    .feature-icon {
+        font-size: 2.5rem;
+        margin-bottom: 16px;
+        display: block;
+    }
+
+    .feature-name {
+        font-family: 'Courier New', monospace;
+        font-size: 1.1rem;
+        font-weight: 700;
+        color: var(--primary);
+        margin-bottom: 12px;
+    }
+
+    .feature-desc {
+        color: #065f46;
+        font-size: 0.9rem;
+        line-height: 1.6;
+    }
+
+    /* Code Block Styling */
+    .code-block {
+        background: #1e293b;
+        border-radius: 16px;
+        padding: 24px;
+        margin: 30px 0;
+        overflow-x: auto;
+        box-shadow: 0 10px 40px rgba(0, 0, 0, 0.3);
+        position: relative;
+    }
+
+    .code-block::before {
+        content: 'Python';
+        position: absolute;
+        top: 12px;
+        right: 12px;
+        background: var(--accent);
+        color: white;
+        padding: 4px 12px;
+        border-radius: 6px;
+        font-size: 0.7rem;
+        font-weight: 600;
+    }
+
+    .code-block pre {
+        margin: 0;
+        color: #e2e8f0;
+        font-family: 'Courier New', monospace;
+        font-size: 0.9rem;
+        line-height: 1.6;
+    }
+
+    .code-comment {
+        color: #94a3b8;
+    }
+
+    .code-keyword {
+        color: #f472b6;
+    }
+
+    .code-string {
+        color: #86efac;
+    }
+
+    .code-function {
+        color: #fbbf24;
+    }
+
+    /* Floating Particles Background */
+    .particles {
+        position: fixed;
+        top: 0;
+        left: 0;
+        width: 100%;
+        height: 100%;
+        pointer-events: none;
+        z-index: 0;
+    }
+
+    .particle {
+        position: absolute;
+        width: 4px;
+        height: 4px;
+        background: var(--accent);
+        border-radius: 50%;
+        opacity: 0.3;
+        animation: float-particle 15s infinite;
+    }
+
+    @keyframes float-particle {
+        0% {
+            transform: translateY(0) translateX(0);
+            opacity: 0;
+        }
+        10% {
+            opacity: 0.3;
+        }
+        90% {
+            opacity: 0.3;
+        }
+        100% {
+            transform: translateY(-100vh) translateX(100px);
+            opacity: 0;
+        }
+    }
+
+    /* Section Title Animations */
+    .section-title {
+        font-family: 'Playfair Display', serif;
+        font-size: 3rem;
+        font-weight: 800;
+        text-align: center;
+        margin-bottom: 20px;
+        color: var(--primary);
+        position: relative;
+        display: inline-block;
+        left: 50%;
+        transform: translateX(-50%);
+    }
+
+    .section-title::after {
+        content: '';
+        position: absolute;
+        bottom: -10px;
+        left: 50%;
+        transform: translateX(-50%);
+        width: 0;
+        height: 4px;
+        background: var(--accent);
+        transition: width 0.8s ease;
+    }
+
+    .section-title.visible::after {
+        width: 60%;
+    }
+
+    .section-subtitle {
+        text-align: center;
+        color: #666;
+        font-size: 1.1rem;
+        margin-bottom: 60px;
+        opacity: 0;
+        transform: translateY(20px);
+        transition: all 0.6s ease;
+    }
+
+    .section-subtitle.visible {
+        opacity: 1;
+        transform: translateY(0);
+    }
+
+    /* Responsive */
+    @media (max-width: 768px) {
+        .hero-content h1 {
+            font-size: 3rem;
+        }
+
+        .section-title {
+            font-size: 2rem;
+        }
+
+        .workflow-steps {
+            grid-template-columns: 1fr;
+        }
+    }
+
+    /* Utility Classes */
+    @keyframes fadeInUp {
+        from {
+            opacity: 0;
+            transform: translateY(30px);
+        }
+        to {
+            opacity: 1;
+            transform: translateY(0);
+        }
+    }
+</style>
+{% endblock %}
+
+{% block content %}
+    <!-- Floating Particles Background -->
+    <div class="particles" id="particles"></div>
+
+    <!-- Parallax Hero Section -->
+    <section class="parallax-hero" id="parallaxHero">
+        <div class="parallax-bg" id="parallaxBg"></div>
+        <div class="hero-content">
+            <div class="hero-badge">🔬 TECHNICAL DEEP DIVE</div>
+            <h1>The Science of Fraud Detection</h1>
+            <p class="hero-subtitle">
+                A comprehensive machine learning pipeline transforming 6.3 million raw transactions into actionable fraud intelligence
+            </p>
+        </div>
+        <div class="scroll-indicator">
+            <svg width="30" height="40" viewBox="0 0 30 40" fill="none" stroke="white" stroke-width="2">
+                <rect x="5" y="5" width="20" height="30" rx="10"></rect>
+                <circle cx="15" cy="12" r="2" fill="white"></circle>
+            </svg>
+        </div>
+    </section>
+
+    <div class="container" style="position: relative; z-index: 10;">
+        
+        <!-- 6-Step Workflow -->
+        <section class="workflow-container">
+            <h2 class="section-title" id="workflowTitle">End-to-End ML Pipeline</h2>
+            <p class="section-subtitle" id="workflowSubtitle">
+                From raw data to production deployment: A systematic approach to fraud detection
+            </p>
+
+            <div class="workflow-steps">
+                <!-- Step 1: Data Loading -->
+                <div class="workflow-step" data-step="1">
+                    <div class="step-card">
+                        <div class="step-number">1</div>
+                        <h3 class="step-title">Data Exploration</h3>
+                        <p class="step-description">
+                            Loaded 6.36M transactions from Kaggle dataset. Performed comprehensive EDA to understand fraud patterns, class distribution (0.129%), and transaction characteristics.
+                        </p>
+                        <div class="step-tech">
+                            <span class="tech-tag">Pandas</span>
+                            <span class="tech-tag">NumPy</span>
+                            <span class="tech-tag">Matplotlib</span>
+                            <span class="tech-tag">Seaborn</span>
+                        </div>
+                    </div>
+                </div>
+
+                <!-- Step 2: Feature Engineering -->
+                <div class="workflow-step" data-step="2">
+                    <div class="step-card">
+                        <div class="step-number">2</div>
+                        <h3 class="step-title">Feature Engineering</h3>
+                        <p class="step-description">
+                            Created 29 features from 6 original columns. Engineered balance differentials, transaction ratios, consistency indicators, and customer interaction patterns.
+                        </p>
+                        <div class="step-tech">
+                            <span class="tech-tag">Feature Creation</span>
+                            <span class="tech-tag">One-Hot Encoding</span>
+                            <span class="tech-tag">Ratio Features</span>
+                        </div>
+                    </div>
+                </div>
+
+                <!-- Step 3: Data Preprocessing -->
+                <div class="workflow-step" data-step="3">
+                    <div class="step-card">
+                        <div class="step-number">3</div>
+                        <h3 class="step-title">Preprocessing</h3>
+                        <p class="step-description">
+                            Handled class imbalance using SMOTE. Applied StandardScaler for numerical features. Performed stratified train-test split (80-20) to maintain fraud distribution.
+                        </p>
+                        <div class="step-tech">
+                            <span class="tech-tag">SMOTE</span>
+                            <span class="tech-tag">StandardScaler</span>
+                            <span class="tech-tag">Stratified Split</span>
+                        </div>
+                    </div>
+                </div>
+
+                <!-- Step 4: Model Training -->
+                <div class="workflow-step" data-step="4">
+                    <div class="step-card">
+                        <div class="step-number">4</div>
+                        <h3 class="step-title">Model Training</h3>
+                        <p class="step-description">
+                            Benchmarked 5 algorithms: Logistic Regression, Random Forest, Gradient Boosting, XGBoost, and LightGBM. Tuned hyperparameters using grid search and cross-validation.
+                        </p>
+                        <div class="step-tech">
+                            <span class="tech-tag">Random Forest</span>
+                            <span class="tech-tag">XGBoost</span>
+                            <span class="tech-tag">LightGBM</span>
+                        </div>
+                    </div>
+                </div>
+
+                <!-- Step 5: Evaluation -->
+                <div class="workflow-step" data-step="5">
+                    <div class="step-card">
+                        <div class="step-number">5</div>
+                        <h3 class="step-title">Model Evaluation</h3>
+                        <p class="step-description">
+                            Achieved 99.63% recall and 88.20% precision with XGBoost. Analyzed confusion matrix, ROC curves, feature importance, and business impact across different thresholds.
+                        </p>
+                        <div class="step-tech">
+                            <span class="tech-tag">Precision/Recall</span>
+                            <span class="tech-tag">ROC-AUC</span>
+                            <span class="tech-tag">Confusion Matrix</span>
+                        </div>
+                    </div>
+                </div>
+
+                <!-- Step 6: Deployment -->
+                <div class="workflow-step" data-step="6">
+                    <div class="step-card">
+                        <div class="step-number">6</div>
+                        <h3 class="step-title">Deployment</h3>
+                        <p class="step-description">
+                            Built Flask web application with REST API, created luxury fintech UI, implemented real-time fraud scoring, and deployed to Railway.app for production use.
+                        </p>
+                        <div class="step-tech">
+                            <span class="tech-tag">Flask</span>
+                            <span class="tech-tag">REST API</span>
+                            <span class="tech-tag">Railway</span>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </section>
+
+        <!-- Architecture Diagram -->
+        <section class="diagram-section">
+            <div class="diagram-container">
+                <h2 class="section-title" style="color: white;">System Architecture</h2>
+                <p class="section-subtitle" style="color: rgba(255, 255, 255, 0.9);">
+                    Complete data flow from transaction input to fraud prediction output
+                </p>
+
+                <img src="{{ url_for('static', filename='images/methodology-diagram.png') }}" 
+                     alt="Fraud Detection System Architecture" 
+                     class="diagram-image" 
+                     id="architectureDiagram">
+
+                <!-- Key Metrics -->
+                <div class="metrics-grid">
+                    <div class="metric-box">
+                        <div class="metric-value">6.36M</div>
+                        <div class="metric-label">Transactions Analyzed</div>
+                    </div>
+                    <div class="metric-box">
+                        <div class="metric-value">29</div>
+                        <div class="metric-label">Engineered Features</div>
+                    </div>
+                    <div class="metric-box">
+                        <div class="metric-value">5</div>
+                        <div class="metric-label">Models Benchmarked</div>
+                    </div>
+                    <div class="metric-box">
+                        <div class="metric-value">99.63%</div>
+                        <div class="metric-label">Recall Achieved</div>
+                    </div>
+                    <div class="metric-box">
+                        <div class="metric-value">0.9995</div>
+                        <div class="metric-label">AUC-ROC Score</div>
+                    </div>
+                </div>
+            </div>
+        </section>
+
+        <!-- Feature Engineering Deep Dive -->
+        <section class="feature-showcase">
+            <h2 class="section-title" id="featureTitle">Feature Engineering Innovations</h2>
+            <p class="section-subtitle" id="featureSubtitle">
+                Transforming 6 raw columns into 29 powerful fraud indicators
+            </p>
+
+            <div class="feature-grid">
+                <!-- Balance Features -->
+                <div class="feature-box">
+                    <span class="feature-icon">⚖️</span>
+                    <div class="feature-name">balance_diff_orig</div>
+                    <p class="feature-desc">
+                        Calculates the change in origin account balance. Fraudulent transactions often show unusual balance changes compared to transaction amounts.
+                    </p>
+                </div>
+
+                <div class="feature-box">
+                    <span class="feature-icon">🎯</span>
+                    <div class="feature-name">orig_balance_consistent</div>
+                    <p class="feature-desc">
+                        <strong>78.6% feature importance!</strong> Checks if balance change matches transaction amount. Inconsistencies are a major fraud indicator.
+                    </p>
+                </div>
+
+                <!-- Ratio Features -->
+                <div class="feature-box">
+                    <span class="feature-icon">📊</span>
+                    <div class="feature-name">amount_to_oldbalance_ratio</div>
+                    <p class="feature-desc">
+                        Ratio of transaction amount to origin balance. High ratios (draining accounts) correlate with fraudulent behavior.
+                    </p>
+                </div>
+
+                <div class="feature-box">
+                    <span class="feature-icon">💵</span>
+                    <div class="feature-name">is_amount_rounded</div>
+                    <p class="feature-desc">
+                        Binary indicator for amounts rounded to $1,000. Fraudsters often use round numbers (3.69% vs 0.05% in normal transactions).
+                    </p>
+                </div>
+
+                <!-- Customer Features -->
+                <div class="feature-box">
+                    <span class="feature-icon">👥</span>
+                    <div class="feature-name">c_to_c / c_to_m</div>
+                    <p class="feature-desc">
+                        Customer-to-Customer and Customer-to-Merchant transaction patterns. Different fraud rates across interaction types.
+                    </p>
+                </div>
+
+                <div class="feature-box">
+                    <span class="feature-icon">🕐</span>
+                    <div class="feature-name">transaction_hour</div>
+                    <p class="feature-desc">
+                        Time-based feature extracted from transaction step. Fraudulent activity shows temporal patterns.
+                    </p>
+                </div>
+            </div>
+
+            <!-- Code Example -->
+            <div class="code-block">
+                <pre><code><span class="code-comment"># Feature Engineering Example</span>
+
+<span class="code-keyword">def</span> <span class="code-function">engineer_features</span>(data):
+    <span class="code-comment"># Balance-based features</span>
+    balance_diff_orig = data[<span class="code-string">'oldbalanceOrg'</span>] - data[<span class="code-string">'newbalanceOrig'</span>]
+    
+    <span class="code-comment"># Ratio features</span>
+    amount_ratio = data[<span class="code-string">'amount'</span>] / (data[<span class="code-string">'oldbalanceOrg'</span>] + <span class="code-keyword">1</span>)
+    
+    <span class="code-comment"># Consistency checks</span>
+    is_consistent = <span class="code-keyword">1</span> <span class="code-keyword">if</span> balance_diff_orig == data[<span class="code-string">'amount'</span>] <span class="code-keyword">else</span> <span class="code-keyword">0</span>
+    
+    <span class="code-comment"># Rounded amount detection</span>
+    is_rounded = <span class="code-keyword">1</span> <span class="code-keyword">if</span> data[<span class="code-string">'amount'</span>] % <span class="code-keyword">1000</span> == <span class="code-keyword">0</span> <span class="code-keyword">else</span> <span class="code-keyword">0</span>
+    
+    <span class="code-keyword">return</span> features</code></pre>
+            </div>
+        </section>
+
+        <!-- Technical Achievements -->
+        <section class="glass-card" id="achievementsCard">
+            <h2 class="section-title">Technical Achievements</h2>
+            
+            <div style="display: grid; grid-template-columns: repeat(auto-fit, minmax(300px, 1fr)); gap: 30px; margin-top: 40px;">
+                <div style="text-align: center; padding: 24px;">
+                    <div style="font-size: 3rem; margin-bottom: 16px;">🎯</div>
+                    <h3 style="font-family: 'Playfair Display', serif; color: var(--primary); margin-bottom: 12px; font-size: 1.5rem;">Class Imbalance Mastery</h3>
+                    <p style="color: #666; line-height: 1.6;">
+                        Successfully handled 0.129% fraud rate using SMOTE oversampling, achieving 99.63% recall without sacrificing precision.
+                    </p>
+                </div>
+
+                <div style="text-align: center; padding: 24px;">
+                    <div style="font-size: 3rem; margin-bottom: 16px;">⚡</div>
+                    <h3 style="font-family: 'Playfair Display', serif; color: var(--primary); margin-bottom: 12px; font-size: 1.5rem;">Optimal Threshold Discovery</h3>
+                    <p style="color: #666; line-height: 1.6;">
+                        Analyzed 9 thresholds to find 0.1 as optimal, maximizing $2.4B savings while maintaining business-acceptable precision.
+                    </p>
+                </div>
+
+                <div style="text-align: center; padding: 24px;">
+                    <div style="font-size: 3rem; margin-bottom: 16px;">🏆</div>
+                    <h3 style="font-family: 'Playfair Display', serif; color: var(--primary); margin-bottom: 12px; font-size: 1.5rem;">Production-Grade Pipeline</h3>
+                    <p style="color: #666; line-height: 1.6;">
+                        Built end-to-end system from Jupyter notebook to deployed web app with REST API and real-time predictions.
+                    </p>
+                </div>
+            </div>
+        </section>
+
+    </div>
+
+    <!-- Scroll Animation Script -->
+    <script>
+        // Parallax Effect
+        const parallaxBg = document.getElementById('parallaxBg');
+        const parallaxHero = document.getElementById('parallaxHero');
+
+        window.addEventListener('scroll', () => {
+            const scrolled = window.pageYOffset;
+            if (parallaxBg && scrolled < window.innerHeight) {
+                parallaxBg.style.transform = `translateY(${scrolled * 0.5}px)`;
+            }
+        });
+
+        // Intersection Observer for Scroll Animations
+        const observerOptions = {
+            threshold: 0.1,
+            rootMargin: '0px 0px -100px 0px'
+        };
+
+        const observer = new IntersectionObserver((entries) => {
+            entries.forEach(entry => {
+                if (entry.isIntersecting) {
+                    entry.target.classList.add('visible');
+                }
+            });
+        }, observerOptions);
+
+        // Observe all animated elements
+        document.querySelectorAll('.workflow-step, .glass-card, .feature-box, .diagram-image, .section-title, .section-subtitle').forEach(el => {
+            observer.observe(el);
+        });
+
+        // Stagger workflow step animations
+        const workflowSteps = document.querySelectorAll('.workflow-step');
+        workflowSteps.forEach((step, index) => {
+            step.style.transitionDelay = `${index * 0.15}s`;
+        });
+
+        // Stagger feature box animations
+        const featureBoxes = document.querySelectorAll('.feature-box');
+        featureBoxes.forEach((box, index) => {
+            box.style.transitionDelay = `${index * 0.1}s`;
+        });
+
+        // Create floating particles
+        const particlesContainer = document.getElementById('particles');
+        for (let i = 0; i < 20; i++) {
+            const particle = document.createElement('div');
+            particle.className = 'particle';
+            particle.style.left = Math.random() * 100 + '%';
+            particle.style.animationDelay = Math.random() * 15 + 's';
+            particle.style.animationDuration = (Math.random() * 10 + 10) + 's';
+            particlesContainer.appendChild(particle);
+        }
+
+        // Smooth scroll for anchor links
+        document.querySelectorAll('a[href^="#"]').forEach(anchor => {
+            anchor.addEventListener('click', function (e) {
+                e.preventDefault();
+                const target = document.querySelector(this.getAttribute('href'));
+                if (target) {
+                    target.scrollIntoView({ behavior: 'smooth', block: 'start' });
+                }
+            });
+        });
+
+        console.log('🎨 Methodology page loaded with WOW factor animations!');
+    </script>
+{% endblock %}

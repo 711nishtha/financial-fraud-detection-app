@@ -1,0 +1,147 @@
+{% extends "base.html" %}
+
+{% block title %}Intelligent Fraud Detection | AI-Powered Demo{% endblock %}
+
+{% block content %}
+    <!-- Hero Section with Background Image -->
+    <section class="hero with-background">
+        <div class="hero-badge">🔒 AI-Powered Security</div>
+        <h1>Intelligent Fraud Detection</h1>
+        <p>Machine learning-powered financial security for real-time transaction analysis</p>
+    </section>
+
+    <!-- Main Container -->
+    <div class="container">
+        <!-- Input Form Card -->
+        <div class="card">
+            <h2 class="card-title">Transaction Analysis</h2>
+            
+            <form id="fraudForm">
+                <div class="form-grid">
+                    <!-- Transaction Type -->
+                    <div class="form-group">
+                        <label class="form-label" for="type">Transaction Type</label>
+                        <select class="form-select" id="type" required>
+                            <option value="">Select Type</option>
+                            <option value="CASH_OUT">Cash Out</option>
+                            <option value="TRANSFER">Transfer</option>
+                            <option value="PAYMENT">Payment</option>
+                            <option value="DEBIT">Debit</option>
+                            <option value="CASH_IN">Cash In</option>
+                        </select>
+                    </div>
+
+                    <!-- Amount -->
+                    <div class="form-group">
+                        <label class="form-label" for="amount">Transaction Amount</label>
+                        <input type="number" class="form-input" id="amount" 
+                               placeholder="0.00" step="0.01" min="0" required>
+                    </div>
+
+                    <!-- Old Balance Origin -->
+                    <div class="form-group">
+                        <label class="form-label" for="oldbalanceOrg">Origin Balance (Before)</label>
+                        <input type="number" class="form-input" id="oldbalanceOrg" 
+                               placeholder="0.00" step="0.01" min="0" required>
+                    </div>
+
+                    <!-- New Balance Origin -->
+                    <div class="form-group">
+                        <label class="form-label" for="newbalanceOrig">Origin Balance (After)</label>
+                        <input type="number" class="form-input" id="newbalanceOrig" 
+                               placeholder="0.00" step="0.01" min="0" required>
+                    </div>
+
+                    <!-- Old Balance Destination -->
+                    <div class="form-group">
+                        <label class="form-label" for="oldbalanceDest">Destination Balance (Before)</label>
+                        <input type="number" class="form-input" id="oldbalanceDest" 
+                               placeholder="0.00" step="0.01" min="0" required>
+                    </div>
+
+                    <!-- New Balance Destination -->
+                    <div class="form-group">
+                        <label class="form-label" for="newbalanceDest">Destination Balance (After)</label>
+                        <input type="number" class="form-input" id="newbalanceDest" 
+                               placeholder="0.00" step="0.01" min="0" required>
+                    </div>
+                </div>
+
+                <!-- Submit Button -->
+                <button type="submit" class="btn btn-primary btn-block" id="submitBtn">
+                    <span id="btnText">Analyze Transaction</span>
+                    <span id="btnSpinner" class="spinner hidden"></span>
+                </button>
+            </form>
+        </div>
+
+        <!-- Results Card -->
+        <div id="resultsSection" class="results">
+            <div id="resultCard" class="result-card">
+                <div class="result-icon" id="resultIcon">✓</div>
+                <h2 class="result-title" id="resultTitle">Transaction Status</h2>
+                <p class="result-subtitle" id="resultSubtitle">Analysis complete</p>
+
+                <!-- Confidence Meter -->
+                <div class="confidence-meter">
+                    <div class="confidence-label">
+                        <span>Confidence Level</span>
+                        <span id="confidenceValue">0%</span>
+                    </div>
+                    <div class="confidence-bar">
+                        <div class="confidence-fill" id="confidenceFill" style="width: 0%"></div>
+                    </div>
+                </div>
+
+                <!-- Risk Level -->
+                <div style="text-align: center; margin: 20px 0;">
+                    <span class="risk-badge" id="riskBadge">Low Risk</span>
+                </div>
+
+                <!-- Transaction Details -->
+                <div class="details-grid">
+                    <div class="detail-item">
+                        <div class="detail-label">Transaction ID</div>
+                        <div class="detail-value" id="transactionId">-</div>
+                    </div>
+                    <div class="detail-item">
+                        <div class="detail-label">Amount</div>
+                        <div class="detail-value" id="detailAmount">$0.00</div>
+                    </div>
+                    <div class="detail-item">
+                        <div class="detail-label">Type</div>
+                        <div class="detail-value" id="detailType">-</div>
+                    </div>
+                </div>
+            </div>
+        </div>
+
+        <!-- Quick Test Section -->
+        <div class="card" style="margin-top: 30px; background: linear-gradient(135deg, #f0fdf4 0%, #dcfce7 100%); border: 2px solid var(--primary);">
+            <h3 style="font-family: 'Playfair Display', serif; color: var(--primary); margin-bottom: 20px;">
+                🧪 Quick Test Cases
+            </h3>
+            <div style="display: grid; grid-template-columns: repeat(auto-fit, minmax(300px, 1fr)); gap: 20px;">
+                <!-- Legitimate Test -->
+                <div style="padding: 20px; background: white; border-radius: 12px; border-left: 4px solid var(--success);">
+                    <h4 style="color: var(--success); margin-bottom: 10px;">✅ Legitimate Transaction</h4>
+                    <p style="font-size: 0.875rem; color: #666; margin-bottom: 12px;">
+                        Type: PAYMENT | Amount: $1,500<br>
+                        Origin: $5,000 → $3,500<br>
+                        Dest: $1,000 → $2,500
+                    </p>
+                </div>
+
+                <!-- Fraud Test -->
+                <div style="padding: 20px; background: white; border-radius: 12px; border-left: 4px solid var(--danger);">
+                    <h4 style="color: var(--danger); margin-bottom: 10px;">⚠️ Fraudulent Transaction</h4>
+                    <p style="font-size: 0.875rem; color: #666; margin-bottom: 12px;">
+                        Type: TRANSFER | Amount: $2,000,000<br>
+                        Origin: $2,500,000 → $500,000<br>
+                        Dest: $0 → $0 (inconsistent!)
+                    </p>
+                </div>
+            </div>
+        </div>
+    </div>
+{% endblock %}

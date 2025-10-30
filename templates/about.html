@@ -1,0 +1,741 @@
+{% extends "base.html" %}
+
+{% block title %}About | Project Journey & Story{% endblock %}
+
+{% block content %}
+    <!-- Hero Section -->
+    <section class="hero">
+        <div class="hero-badge">👩‍💻 STUDENT PROJECT</div>
+        <h1>The Journey Behind the Code</h1>
+        <p>How a first-year computer science student built an industry-grade fraud detection system</p>
+    </section>
+
+    <!-- Main Content -->
+    <div class="container">
+        
+        <!-- Introduction -->
+        <div class="card">
+            <div style="display: grid; grid-template-columns: 1fr 2fr; gap: 40px; align-items: center;">
+                <div style="text-align: center;">
+                    <div style="width: 180px; height: 180px; margin: 0 auto 20px; border-radius: 50%; overflow: hidden; box-shadow: 0 10px 40px rgba(0, 100, 0, 0.3); border: 4px solid var(--accent);">
+                        <img src="{{ url_for('static', filename='images/me.jpeg') }}" 
+                             alt="Nishtha Sharma" 
+                             style="width: 100%; height: 100%; object-fit: cover; transition: transform 0.3s ease;"
+                             onmouseover="this.style.transform='scale(1.1)'"
+                             onmouseout="this.style.transform='scale(1)'">
+                    </div>
+                    <h2 style="font-family: 'Playfair Display', serif; color: var(--primary); margin-bottom: 8px;">Nishtha Sharma</h2>
+                    <p style="color: #666; font-size: 0.95rem; margin-bottom: 16px;">First-Year Computer Science Student</p>
+                    <div style="display: flex; gap: 12px; justify-content: center;">
+                        <a href="https://www.linkedin.com/in/nishtha711/" target="_blank" class="social-btn">
+                            <svg width="20" height="20" viewBox="0 0 24 24" fill="currentColor">
+                                <path d="M19 0h-14c-2.761 0-5 2.239-5 5v14c0 2.761 2.239 5 5 5h14c2.762 0 5-2.239 5-5v-14c0-2.761-2.238-5-5-5zm-11 19h-3v-11h3v11zm-1.5-12.268c-.966 0-1.75-.79-1.75-1.764s.784-1.764 1.75-1.764 1.75.79 1.75 1.764-.783 1.764-1.75 1.764zm13.5 12.268h-3v-5.604c0-3.368-4-3.113-4 0v5.604h-3v-11h3v1.765c1.396-2.586 7-2.777 7 2.476v6.759z"/>
+                            </svg>
+                        </a>
+                        <a href="https://github.com/711nishtha" target="_blank" class="social-btn">
+                            <svg width="20" height="20" viewBox="0 0 24 24" fill="currentColor">
+                                <path d="M12 0c-6.626 0-12 5.373-12 12 0 5.302 3.438 9.8 8.207 11.387.599.111.793-.261.793-.577v-2.234c-3.338.726-4.033-1.416-4.033-1.416-.546-1.387-1.333-1.756-1.333-1.756-1.089-.745.083-.729.083-.729 1.205.084 1.839 1.237 1.839 1.237 1.07 1.834 2.807 1.304 3.492.997.107-.775.418-1.305.762-1.604-2.665-.305-5.467-1.334-5.467-5.931 0-1.311.469-2.381 1.236-3.221-.124-.303-.535-1.524.117-3.176 0 0 1.008-.322 3.301 1.23.957-.266 1.983-.399 3.003-.404 1.02.005 2.047.138 3.006.404 2.291-1.552 3.297-1.23 3.297-1.23.653 1.653.242 2.874.118 3.176.77.84 1.235 1.911 1.235 3.221 0 4.609-2.807 5.624-5.479 5.921.43.372.823 1.102.823 2.222v3.293c0 .319.192.694.801.576 4.765-1.589 8.199-6.086 8.199-11.386 0-6.627-5.373-12-12-12z"/>
+                            </svg>
+                        </a>
+                        <a href="https://www.kaggle.com/nishtha711" target="_blank" class="social-btn">
+                            <svg width="20" height="20" viewBox="0 0 24 24" fill="currentColor">
+                                <path d="M18.825 23.859c-.022.092-.117.141-.281.141h-3.139c-.187 0-.351-.082-.492-.248l-5.178-6.589-1.448 1.374v5.111c0 .235-.117.352-.351.352H5.505c-.236 0-.354-.117-.354-.352V.353c0-.233.118-.353.354-.353h2.431c.234 0 .351.12.351.353v14.343l6.203-6.272c.165-.165.33-.246.495-.246h3.239c.144 0 .236.06.285.18.046.149.034.255-.036.315l-6.555 6.344 6.836 8.507c.095.104.117.208.07.358"/>
+                            </svg>
+                        </a>
+                    </div>
+                </div>
+                <div>
+                    <h2 style="font-family: 'Playfair Display', serif; color: var(--primary); font-size: 2rem; margin-bottom: 16px;">Beyond the Classroom</h2>
+                    <p style="color: #666; line-height: 1.8; margin-bottom: 16px;">
+                        As a first-year computer science student, I've always been fascinated by the intersection of <strong style="color: var(--primary);">data science</strong>, <strong style="color: var(--primary);">machine learning</strong>, and <strong style="color: var(--primary);">real-world business problems</strong>. This fraud detection project represents my journey of going beyond coursework to build something that could genuinely impact the financial security industry.
+                    </p>
+                    <p style="color: #666; line-height: 1.8;">
+                        What started as a Kaggle dataset exploration evolved into a comprehensive end-to-end machine learning project — from exploratory data analysis to production-ready deployment. Through this process, I've learned not just the technical skills, but the importance of <strong style="color: var(--primary);">translating data insights into business value</strong>.
+                    </p>
+                </div>
+            </div>
+        </div>
+
+        <!-- Project Motivation -->
+        <div class="card">
+            <h2 class="card-title">Why Fraud Detection?</h2>
+            
+            <div class="motivation-grid">
+                <div class="motivation-card">
+                    <div class="motivation-icon">💡</div>
+                    <h3>Real-World Impact</h3>
+                    <p>Financial fraud affects millions globally, causing <strong>$12+ billion in annual losses</strong>. I wanted to build something that could make a tangible difference in protecting people's hard-earned money.</p>
+                </div>
+
+                <div class="motivation-card">
+                    <div class="motivation-icon">🎯</div>
+                    <h3>Technical Challenge</h3>
+                    <p>The extreme class imbalance (0.129% fraud rate) and need for high precision/recall created the perfect opportunity to learn advanced ML techniques like SMOTE, threshold optimization, and ensemble methods.</p>
+                </div>
+
+                <div class="motivation-card">
+                    <div class="motivation-icon">📊</div>
+                    <h3>Business Acumen</h3>
+                    <p>Understanding that a fraud detection model isn't just about accuracy — it's about <strong>balancing detection rates with investigation costs</strong> to maximize business value.</p>
+                </div>
+
+                <div class="motivation-card">
+                    <div class="motivation-icon">🚀</div>
+                    <h3>Portfolio Building</h3>
+                    <p>As an aspiring data scientist, I wanted to showcase my ability to handle end-to-end projects: from data preprocessing to deployment-ready applications.</p>
+                </div>
+            </div>
+        </div>
+
+        <!-- Technical Challenges -->
+        <div class="card">
+            <h2 class="card-title">Challenges Overcome</h2>
+            <p style="color: #666; margin-bottom: 30px;">
+                Building this system wasn't without its hurdles. Here are the key challenges I faced and how I solved them:
+            </p>
+
+            <div class="challenge-list">
+                <!-- Challenge 1 -->
+                <div class="challenge-item">
+                    <div class="challenge-number">01</div>
+                    <div class="challenge-content">
+                        <h3>Extreme Class Imbalance</h3>
+                        <div class="challenge-problem">
+                            <strong>Problem:</strong> Only 0.129% of transactions were fraudulent (8,213 out of 6.3M). Traditional models would simply predict "no fraud" for everything and still achieve 99.87% accuracy.
+                        </div>
+                        <div class="challenge-solution">
+                            <strong>Solution:</strong> Implemented SMOTE (Synthetic Minority Oversampling Technique) to balance the training data, used stratified cross-validation, and optimized for F1-score instead of accuracy. Applied class weights and threshold optimization for business-optimal results.
+                        </div>
+                    </div>
+                </div>
+
+                <!-- Challenge 2 -->
+                <div class="challenge-item">
+                    <div class="challenge-number">02</div>
+                    <div class="challenge-content">
+                        <h3>Feature Engineering at Scale</h3>
+                        <div class="challenge-problem">
+                            <strong>Problem:</strong> The raw dataset had only basic transaction data. Creating meaningful fraud indicators required domain knowledge and creative feature engineering.
+                        </div>
+                        <div class="challenge-solution">
+                            <strong>Solution:</strong> Engineered 29 features including balance consistency checks, ratio-based features, rounded amount detection, and customer interaction patterns. The top feature (balance_consistent) alone contributed 78.6% to model predictions.
+                        </div>
+                    </div>
+                </div>
+
+                <!-- Challenge 3 -->
+                <div class="challenge-item">
+                    <div class="challenge-number">03</div>
+                    <div class="challenge-content">
+                        <h3>Model Selection & Tuning</h3>
+                        <div class="challenge-problem">
+                            <strong>Problem:</strong> Needed to benchmark multiple algorithms and find the optimal model that balanced precision, recall, and business metrics.
+                        </div>
+                        <div class="challenge-solution">
+                            <strong>Solution:</strong> Trained and compared 5 algorithms (Logistic Regression, Random Forest, Gradient Boosting, XGBoost, LightGBM). Selected Random Forest for highest F1 (99.88%) but deployed XGBoost for production due to superior threshold optimization and business savings ($2.4B vs $2.3B).
+                        </div>
+                    </div>
+                </div>
+
+                <!-- Challenge 4 -->
+                <div class="challenge-item">
+                    <div class="challenge-number">04</div>
+                    <div class="challenge-content">
+                        <h3>Business Threshold Optimization</h3>
+                        <div class="challenge-problem">
+                            <strong>Problem:</strong> Default 0.5 threshold wasn't optimal for business. Needed to balance fraud detection with false positive investigation costs.
+                        </div>
+                        <div class="challenge-solution">
+                            <strong>Solution:</strong> Conducted comprehensive threshold analysis from 0.1 to 0.9, calculating net savings for each. Found 0.1 threshold maximized savings ($2.406B) by catching 99.8% of fraud with minimal investigation overhead.
+                        </div>
+                    </div>
+                </div>
+
+                <!-- Challenge 5 -->
+                <div class="challenge-item">
+                    <div class="challenge-number">05</div>
+                    <div class="challenge-content">
+                        <h3>Production Deployment</h3>
+                        <div class="challenge-problem">
+                            <strong>Problem:</strong> Moving from Jupyter notebook to production-ready web application required completely different skillset and architecture.
+                        </div>
+                        <div class="challenge-solution">
+                            <strong>Solution:</strong> Built Flask backend with RESTful API, created responsive frontend with luxury fintech design, implemented proper error handling and model serving, and prepared deployment configurations for Railway/Render platforms.
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+
+        <!-- Skills Developed -->
+        <div class="card">
+            <h2 class="card-title">Skills & Technologies Mastered</h2>
+            
+            <div class="skills-grid">
+                <!-- Data Science & ML -->
+                <div class="skill-category">
+                    <h3>🤖 Machine Learning</h3>
+                    <div class="skill-tags">
+                        <span class="skill-tag">Scikit-learn</span>
+                        <span class="skill-tag">XGBoost</span>
+                        <span class="skill-tag">LightGBM</span>
+                        <span class="skill-tag">Random Forest</span>
+                        <span class="skill-tag">Ensemble Methods</span>
+                        <span class="skill-tag">SMOTE</span>
+                        <span class="skill-tag">Cross-Validation</span>
+                        <span class="skill-tag">Hyperparameter Tuning</span>
+                    </div>
+                </div>
+
+                <!-- Data Analysis -->
+                <div class="skill-category">
+                    <h3>📊 Data Analysis</h3>
+                    <div class="skill-tags">
+                        <span class="skill-tag">Pandas</span>
+                        <span class="skill-tag">NumPy</span>
+                        <span class="skill-tag">Matplotlib</span>
+                        <span class="skill-tag">Seaborn</span>
+                        <span class="skill-tag">Statistical Analysis</span>
+                        <span class="skill-tag">EDA</span>
+                        <span class="skill-tag">Feature Engineering</span>
+                    </div>
+                </div>
+
+                <!-- Web Development -->
+                <div class="skill-category">
+                    <h3>💻 Web Development</h3>
+                    <div class="skill-tags">
+                        <span class="skill-tag">Flask</span>
+                        <span class="skill-tag">REST APIs</span>
+                        <span class="skill-tag">HTML5/CSS3</span>
+                        <span class="skill-tag">JavaScript</span>
+                        <span class="skill-tag">Responsive Design</span>
+                        <span class="skill-tag">Jinja2 Templates</span>
+                    </div>
+                </div>
+
+                <!-- DevOps & Deployment -->
+                <div class="skill-category">
+                    <h3>🚀 Deployment</h3>
+                    <div class="skill-tags">
+                        <span class="skill-tag">Git/GitHub</span>
+                        <span class="skill-tag">Gunicorn</span>
+                        <span class="skill-tag">Railway.app</span>
+                        <span class="skill-tag">Model Serving</span>
+                        <span class="skill-tag">Docker (Learning)</span>
+                    </div>
+                </div>
+
+                <!-- Business Skills -->
+                <div class="skill-category">
+                    <h3>💼 Business Acumen</h3>
+                    <div class="skill-tags">
+                        <span class="skill-tag">ROI Analysis</span>
+                        <span class="skill-tag">Cost-Benefit</span>
+                        <span class="skill-tag">KPI Definition</span>
+                        <span class="skill-tag">Stakeholder Communication</span>
+                        <span class="skill-tag">Business Metrics</span>
+                    </div>
+                </div>
+
+                <!-- Soft Skills -->
+                <div class="skill-category">
+                    <h3>🎯 Professional Skills</h3>
+                    <div class="skill-tags">
+                        <span class="skill-tag">Problem Solving</span>
+                        <span class="skill-tag">Self-Learning</span>
+                        <span class="skill-tag">Documentation</span>
+                        <span class="skill-tag">Project Management</span>
+                        <span class="skill-tag">Attention to Detail</span>
+                    </div>
+                </div>
+            </div>
+        </div>
+
+        <!-- Learning Journey Timeline -->
+        <div class="card">
+            <h2 class="card-title">Project Timeline</h2>
+            
+            <div class="timeline">
+                <div class="timeline-item">
+                    <div class="timeline-dot"></div>
+                    <div class="timeline-content">
+                        <div class="timeline-date">Week 1-2</div>
+                        <h3>Data Exploration & Understanding</h3>
+                        <p>Loaded 6.3M transaction dataset, performed exploratory data analysis, identified class imbalance challenge, and researched fraud detection techniques.</p>
+                    </div>
+                </div>
+
+                <div class="timeline-item">
+                    <div class="timeline-dot"></div>
+                    <div class="timeline-content">
+                        <div class="timeline-date">Week 3-4</div>
+                        <h3>Feature Engineering & Preprocessing</h3>
+                        <p>Created 29 engineered features, handled multicollinearity, implemented data scaling, and prepared train/test splits with stratification.</p>
+                    </div>
+                </div>
+
+                <div class="timeline-item">
+                    <div class="timeline-dot"></div>
+                    <div class="timeline-content">
+                        <div class="timeline-date">Week 5-6</div>
+                        <h3>Model Development & Training</h3>
+                        <p>Benchmarked 5 algorithms, applied SMOTE for class balance, tuned hyperparameters, and achieved 99.88% F1 score with Random Forest.</p>
+                    </div>
+                </div>
+
+                <div class="timeline-item">
+                    <div class="timeline-dot"></div>
+                    <div class="timeline-content">
+                        <div class="timeline-date">Week 7-8</div>
+                        <h3>Business Analysis & Optimization</h3>
+                        <p>Conducted threshold optimization, calculated ROI projections, analyzed cost-benefit scenarios, and identified $2.4B savings potential.</p>
+                    </div>
+                </div>
+
+                <div class="timeline-item">
+                    <div class="timeline-dot"></div>
+                    <div class="timeline-content">
+                        <div class="timeline-date">Week 9-10</div>
+                        <h3>Web Application Development</h3>
+                        <p>Built Flask backend with REST API, designed luxury fintech UI, implemented real-time fraud detection demo, and prepared deployment configurations.</p>
+                    </div>
+                </div>
+
+                <div class="timeline-item">
+                    <div class="timeline-dot"></div>
+                    <div class="timeline-content">
+                        <div class="timeline-date">Week 11-12</div>
+                        <h3>Documentation & Deployment</h3>
+                        <p>Created comprehensive documentation, built portfolio website with detailed insights, deployed to cloud platform, and prepared for showcase.</p>
+                    </div>
+                </div>
+            </div>
+        </div>
+
+        <!-- Key Learnings -->
+        <div class="card" style="background: linear-gradient(135deg, #f0fdf4 0%, #dcfce7 100%); border: 2px solid var(--primary);">
+            <h2 class="card-title">Key Takeaways</h2>
+            
+            <div class="takeaway-grid">
+                <div class="takeaway-item">
+                    <div class="takeaway-number">1</div>
+                    <p><strong>Data Quality Matters More Than Model Complexity</strong> — Spending time on feature engineering (29 features from 6 originals) had more impact than trying the fanciest algorithms.</p>
+                </div>
+
+                <div class="takeaway-item">
+                    <div class="takeaway-number">2</div>
+                    <p><strong>Business Context Drives Technical Decisions</strong> — The "best" model (Random Forest, 99.88% F1) wasn't the deployed model. XGBoost with 0.1 threshold saved $100M more annually.</p>
+                </div>
+
+                <div class="takeaway-item">
+                    <div class="takeaway-number">3</div>
+                    <p><strong>Class Imbalance is a Feature, Not a Bug</strong> — The 0.129% fraud rate taught me advanced techniques (SMOTE, threshold tuning) that are crucial in real-world ML.</p>
+                </div>
+
+                <div class="takeaway-item">
+                    <div class="takeaway-number">4</div>
+                    <p><strong>End-to-End Thinking Matters</strong> — Building a Jupyter notebook is one thing; creating a production-ready web app with deployment configs is where real learning happens.</p>
+                </div>
+
+                <div class="takeaway-item">
+                    <div class="takeaway-number">5</div>
+                    <p><strong>Documentation is as Important as Code</strong> — This portfolio website showcases the project better than the model itself. Communication matters!</p>
+                </div>
+
+                <div class="takeaway-item">
+                    <div class="takeaway-number">6</div>
+                    <p><strong>Self-Learning Accelerates Growth</strong> — As a first-year student, 90% of what I used in this project came from online courses, documentation, and experimentation — not classroom lectures.</p>
+                </div>
+            </div>
+        </div>
+
+        <!-- Future Vision -->
+        <div class="card">
+            <h2 class="card-title">What's Next?</h2>
+            
+            <div style="display: grid; grid-template-columns: repeat(auto-fit, minmax(300px, 1fr)); gap: 24px;">
+                <div class="future-card">
+                    <h3>🔬 Technical Enhancements</h3>
+                    <ul>
+                        <li>Implement deep learning (LSTM) for sequential pattern detection</li>
+                        <li>Add real-time model monitoring and drift detection</li>
+                        <li>Deploy automated retraining pipeline</li>
+                        <li>Experiment with graph neural networks for fraud rings</li>
+                    </ul>
+                </div>
+
+                <div class="future-card">
+                    <h3>💼 Career Goals</h3>
+                    <ul>
+                        <li>Secure data science internship at fintech company</li>
+                        <li>Contribute to open-source ML projects</li>
+                        <li>Compete in Kaggle competitions (currently Novice)</li>
+                        <li>Build more end-to-end ML applications</li>
+                    </ul>
+                </div>
+
+                <div class="future-card">
+                    <h3>📚 Learning Roadmap</h3>
+                    <ul>
+                        <li>Master deep learning frameworks (TensorFlow, PyTorch)</li>
+                        <li>Learn advanced MLOps and deployment strategies</li>
+                        <li>Dive deeper into NLP and computer vision</li>
+                        <li>Study distributed systems and big data technologies</li>
+                    </ul>
+                </div>
+            </div>
+        </div>
+
+        <!-- Call to Action -->
+        <div class="card" style="text-align: center; background: linear-gradient(135deg, var(--primary) 0%, var(--secondary) 100%); color: white;">
+            <h2 style="font-family: 'Playfair Display', serif; font-size: 2.5rem; margin-bottom: 16px; color: white;">Let's Connect!</h2>
+            <p style="font-size: 1.1rem; margin-bottom: 30px; opacity: 0.95;">
+                Interested in collaborating, discussing this project, or exploring opportunities?
+            </p>
+            
+            <div style="display: flex; gap: 16px; justify-content: center; flex-wrap: wrap;">
+                <a href="https://www.linkedin.com/in/nishtha711/" target="_blank" class="cta-button">
+                    <svg width="20" height="20" viewBox="0 0 24 24" fill="currentColor" style="margin-right: 8px;">
+                        <path d="M19 0h-14c-2.761 0-5 2.239-5 5v14c0 2.761 2.239 5 5 5h14c2.762 0 5-2.239 5-5v-14c0-2.761-2.238-5-5-5zm-11 19h-3v-11h3v11zm-1.5-12.268c-.966 0-1.75-.79-1.75-1.764s.784-1.764 1.75-1.764 1.75.79 1.75 1.764-.783 1.764-1.75 1.764zm13.5 12.268h-3v-5.604c0-3.368-4-3.113-4 0v5.604h-3v-11h3v1.765c1.396-2.586 7-2.777 7 2.476v6.759z"/>
+                    </svg>
+                    Connect on LinkedIn
+                </a>
+                <a href="https://github.com/711nishtha" target="_blank" class="cta-button">
+                    <svg width="20" height="20" viewBox="0 0 24 24" fill="currentColor" style="margin-right: 8px;">
+                        <path d="M12 0c-6.626 0-12 5.373-12 12 0 5.302 3.438 9.8 8.207 11.387.599.111.793-.261.793-.577v-2.234c-3.338.726-4.033-1.416-4.033-1.416-.546-1.387-1.333-1.756-1.333-1.756-1.089-.745.083-.729.083-.729 1.205.084 1.839 1.237 1.839 1.237 1.07 1.834 2.807 1.304 3.492.997.107-.775.418-1.305.762-1.604-2.665-.305-5.467-1.334-5.467-5.931 0-1.311.469-2.381 1.236-3.221-.124-.303-.535-1.524.117-3.176 0 0 1.008-.322 3.301 1.23.957-.266 1.983-.399 3.003-.404 1.02.005 2.047.138 3.006.404 2.291-1.552 3.297-1.23 3.297-1.23.653 1.653.242 2.874.118 3.176.77.84 1.235 1.911 1.235 3.221 0 4.609-2.807 5.624-5.479 5.921.43.372.823 1.102.823 2.222v3.293c0 .319.192.694.801.576 4.765-1.589 8.199-6.086 8.199-11.386 0-6.627-5.373-12-12-12z"/>
+                    </svg>
+                    View GitHub Profile
+                </a>
+                <a href="https://www.kaggle.com/nishtha711" target="_blank" class="cta-button">
+                    <svg width="20" height="20" viewBox="0 0 24 24" fill="currentColor" style="margin-right: 8px;">
+                        <path d="M18.825 23.859c-.022.092-.117.141-.281.141h-3.139c-.187 0-.351-.082-.492-.248l-5.178-6.589-1.448 1.374v5.111c0 .235-.117.352-.351.352H5.505c-.236 0-.354-.117-.354-.352V.353c0-.233.118-.353.354-.353h2.431c.234 0 .351.12.351.353v14.343l6.203-6.272c.165-.165.33-.246.495-.246h3.239c.144 0 .236.06.285.18.046.149.034.255-.036.315l-6.555 6.344 6.836 8.507c.095.104.117.208.07.358"/>
+                    </svg>
+                    Follow on Kaggle
+                </a>
+            </div>
+        </div>
+
+    </div>
+
+    <!-- Custom Styles for About Page -->
+    <style>
+        .social-btn {
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            width: 40px;
+            height: 40px;
+            background: var(--primary);
+            color: white;
+            border-radius: 50%;
+            text-decoration: none;
+            transition: all 0.3s ease;
+        }
+
+        .social-btn:hover {
+            background: var(--accent);
+            transform: translateY(-3px);
+            box-shadow: 0 5px 15px rgba(0, 100, 0, 0.3);
+        }
+
+        .motivation-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(260px, 1fr));
+            gap: 24px;
+        }
+
+        .motivation-card {
+            background: white;
+            border-radius: 16px;
+            padding: 28px;
+            box-shadow: 0 4px 20px rgba(0, 0, 0, 0.06);
+            text-align: center;
+            transition: transform 0.3s ease;
+        }
+
+        .motivation-card:hover {
+            transform: translateY(-5px);
+        }
+
+        .motivation-icon {
+            font-size: 3rem;
+            margin-bottom: 16px;
+        }
+
+        .motivation-card h3 {
+            font-family: 'Playfair Display', serif;
+            font-size: 1.25rem;
+            color: var(--primary);
+            margin-bottom: 12px;
+        }
+
+        .motivation-card p {
+            font-size: 0.9rem;
+            color: #666;
+            line-height: 1.6;
+        }
+
+        .challenge-list {
+            display: flex;
+            flex-direction: column;
+            gap: 24px;
+        }
+
+        .challenge-item {
+            display: grid;
+            grid-template-columns: 80px 1fr;
+            gap: 24px;
+            background: white;
+            border-radius: 16px;
+            padding: 24px;
+            box-shadow: 0 4px 20px rgba(0, 0, 0, 0.06);
+            transition: all 0.3s ease;
+        }
+
+        .challenge-item:hover {
+            transform: translateX(8px);
+            box-shadow: 0 6px 30px rgba(0, 100, 0, 0.1);
+        }
+
+        .challenge-number {
+            width: 60px;
+            height: 60px;
+            background: linear-gradient(135deg, var(--primary) 0%, var(--secondary) 100%);
+            color: white;
+            border-radius: 12px;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            font-family: 'Playfair Display', serif;
+            font-size: 1.75rem;
+            font-weight: 700;
+        }
+
+        .challenge-content h3 {
+            font-family: 'Playfair Display', serif;
+            font-size: 1.5rem;
+            color: var(--primary);
+            margin-bottom: 16px;
+        }
+
+        .challenge-problem,
+        .challenge-solution {
+            margin-bottom: 12px;
+            padding: 12px 16px;
+            border-radius: 8px;
+            font-size: 0.9rem;
+            line-height: 1.6;
+        }
+
+        .challenge-problem {
+            background: #fee2e2;
+            border-left: 4px solid var(--danger);
+            color: #991b1b;
+        }
+
+        .challenge-solution {
+            background: #d1fae5;
+            border-left: 4px solid var(--success);
+            color: #065f46;
+        }
+
+        .skills-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
+            gap: 24px;
+        }
+
+        .skill-category {
+            background: white;
+            border-radius: 12px;
+            padding: 24px;
+        }
+
+        .skill-category h3 {
+            font-family: 'Playfair Display', serif;
+            font-size: 1.25rem;
+            color: var(--primary);
+            margin-bottom: 16px;
+        }
+
+        .skill-tags {
+            display: flex;
+            flex-wrap: wrap;
+            gap: 8px;
+        }
+
+        .skill-tag {
+            display: inline-block;
+            background: linear-gradient(135deg, var(--primary) 0%, var(--secondary) 100%);
+            color: white;
+            padding: 6px 14px;
+            border-radius: 50px;
+            font-size: 0.8rem;
+            font-weight: 500;
+            transition: transform 0.2s ease;
+        }
+
+        .skill-tag:hover {
+            transform: scale(1.05);
+        }
+
+        .timeline {
+            position: relative;
+            padding-left: 40px;
+        }
+
+        .timeline::before {
+            content: '';
+            position: absolute;
+            left: 15px;
+            top: 0;
+            bottom: 0;
+            width: 2px;
+            background: linear-gradient(180deg, var(--primary) 0%, var(--accent) 100%);
+        }
+
+        .timeline-item {
+            position: relative;
+            margin-bottom: 40px;
+        }
+
+        .timeline-dot {
+            position: absolute;
+            left: -33px;
+            top: 0;
+            width: 16px;
+            height: 16px;
+            background: var(--accent);
+            border: 3px solid var(--primary);
+            border-radius: 50%;
+            box-shadow: 0 0 0 4px rgba(0, 100, 0, 0.1);
+        }
+
+        .timeline-content {
+            background: white;
+            border-radius: 12px;
+            padding: 20px;
+            box-shadow: 0 4px 20px rgba(0, 0, 0, 0.06);
+        }
+
+        .timeline-date {
+            display: inline-block;
+            background: var(--primary);
+            color: white;
+            padding: 4px 12px;
+            border-radius: 50px;
+            font-size: 0.8rem;
+            font-weight: 600;
+            margin-bottom: 12px;
+        }
+
+        .timeline-content h3 {
+            font-family: 'Playfair Display', serif;
+            font-size: 1.25rem;
+            color: var(--primary);
+            margin-bottom: 8px;
+        }
+
+        .timeline-content p {
+            color: #666;
+            font-size: 0.9rem;
+            line-height: 1.6;
+        }
+
+        .takeaway-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
+            gap: 24px;
+        }
+
+        .takeaway-item {
+            background: white;
+            border-radius: 12px;
+            padding: 24px;
+            display: flex;
+            gap: 16px;
+            align-items: flex-start;
+        }
+
+        .takeaway-number {
+            width: 40px;
+            height: 40px;
+            background: var(--accent);
+            color: white;
+            border-radius: 50%;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            font-weight: 700;
+            font-size: 1.25rem;
+            flex-shrink: 0;
+        }
+
+        .takeaway-item p {
+            font-size: 0.9rem;
+            color: #065f46;
+            line-height: 1.6;
+        }
+
+        .future-card {
+            background: white;
+            border-radius: 12px;
+            padding: 24px;
+        }
+
+        .future-card h3 {
+            font-family: 'Playfair Display', serif;
+            font-size: 1.25rem;
+            color: var(--primary);
+            margin-bottom: 16px;
+        }
+
+        .future-card ul {
+            list-style: none;
+            padding: 0;
+        }
+
+        .future-card li {
+            padding: 8px 0 8px 24px;
+            position: relative;
+            color: #666;
+            font-size: 0.9rem;
+            line-height: 1.5;
+        }
+
+        .future-card li::before {
+            content: '→';
+            position: absolute;
+            left: 0;
+            color: var(--accent);
+            font-weight: 700;
+        }
+
+        .cta-button {
+            display: inline-flex;
+            align-items: center;
+            background: white;
+            color: var(--primary);
+            padding: 14px 28px;
+            border-radius: 50px;
+            text-decoration: none;
+            font-weight: 600;
+            transition: all 0.3s ease;
+            box-shadow: 0 4px 15px rgba(0, 0, 0, 0.2);
+        }
+
+        .cta-button:hover {
+            background: var(--accent);
+            color: white;
+            transform: translateY(-3px);
+            box-shadow: 0 8px 25px rgba(0, 0, 0, 0.3);
+        }
+
+        @media (max-width: 768px) {
+            .card > div[style*="grid-template-columns: 1fr 2fr"] {
+                grid-template-columns: 1fr !important;
+            }
+        }
+    </style>
+{% endblock %}

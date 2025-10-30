@@ -1,0 +1,92 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>{% block title %}Intelligent Fraud Detection{% endblock %}</title>
+    
+    <!-- Favicon -->
+    <link rel="icon" type="image/jpeg" href="{{ url_for('static', filename='images/fav.jpeg') }}">
+    
+    <!-- Google Fonts -->
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700;800&family=Playfair+Display:wght@400;600;700;800&display=swap" rel="stylesheet">
+    
+    <!-- External CSS -->
+    <link rel="stylesheet" href="{{ url_for('static', filename='css/style.css') }}">
+    
+    <!-- Page-specific CSS -->
+    {% block extra_css %}{% endblock %}
+</head>
+<body>
+    <!-- Navigation Bar -->
+    <nav class="navbar">
+        <div class="nav-container">
+            <div class="nav-logo">
+                <a href="/">Intelligent Fraud Detection</a>
+            </div>
+            
+            <!-- Desktop Menu -->
+            <ul class="nav-menu">
+                <li><a href="/" class="nav-link {% if request.path == '/' %}active{% endif %}">Home</a></li>
+                <li><a href="/analysis" class="nav-link {% if request.path == '/analysis' %}active{% endif %}">Analysis</a></li>
+                <li><a href="/performance" class="nav-link {% if request.path == '/performance' %}active{% endif %}">Performance</a></li>
+                <li><a href="/business" class="nav-link {% if request.path == '/business' %}active{% endif %}">Business</a></li>
+                <li><a href="/methodology" class="nav-link {% if request.path == '/methodology' %}active{% endif %}">Methodology</a></li>
+                <li><a href="/about" class="nav-link {% if request.path == '/about' %}active{% endif %}">About</a></li>
+            </ul>
+            
+            <!-- Mobile Hamburger -->
+            <div class="hamburger" id="hamburger">
+                <span></span>
+                <span></span>
+                <span></span>
+            </div>
+        </div>
+    </nav>
+
+    <!-- Main Content -->
+    <main>
+        {% block content %}{% endblock %}
+    </main>
+
+    <!-- Footer -->
+    <footer class="site-footer">
+        <div class="footer-content">
+            <div class="footer-experimental">Experimental Project • Created in 2025</div>
+            <div class="footer-author">Nishtha Sharma</div>
+            <div class="footer-social">
+                <a href="https://www.linkedin.com/in/nishtha711/" target="_blank" rel="noopener">LinkedIn</a>
+                <span class="separator">•</span>
+                <a href="https://github.com/711nishtha" target="_blank" rel="noopener">GitHub</a>
+            </div>
+        </div>
+    </footer>
+
+    <!-- External JavaScript -->
+    <script src="{{ url_for('static', filename='js/script.js') }}"></script>
+    
+    <!-- Mobile Menu Toggle -->
+    <script>
+        const hamburger = document.getElementById('hamburger');
+        const navMenu = document.querySelector('.nav-menu');
+        
+        hamburger.addEventListener('click', () => {
+            hamburger.classList.toggle('active');
+            navMenu.classList.toggle('active');
+        });
+        
+        // Close menu when clicking nav link
+        document.querySelectorAll('.nav-link').forEach(link => {
+            link.addEventListener('click', () => {
+                hamburger.classList.remove('active');
+                navMenu.classList.remove('active');
+            });
+        });
+    </script>
+    
+    <!-- Page-specific JavaScript -->
+    {% block extra_js %}{% endblock %}
+</body>
+</html>

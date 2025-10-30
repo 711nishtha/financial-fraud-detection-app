@@ -1,0 +1,1025 @@
+{% extends "base.html" %}
+
+{% block title %}Business Impact | ROI & Financial Analysis{% endblock %}
+
+{% block content %}
+    <!-- Hero Section -->
+    <section class="hero">
+        <div class="hero-badge">💰 BUSINESS IMPACT</div>
+        <h1>Financial ROI Analysis</h1>
+        <p>Projected $2.4 billion annual savings through intelligent fraud prevention and optimal threshold optimization</p>
+    </section>
+
+    <!-- Main Content -->
+    <div class="container">
+        
+        <!-- Executive Summary Cards -->
+        <div style="display: grid; grid-template-columns: repeat(auto-fit, minmax(260px, 1fr)); gap: 24px; margin-bottom: 50px;">
+            <!-- Annual Savings -->
+            <div class="roi-card" style="background: linear-gradient(135deg, #d1fae5 0%, #a7f3d0 100%); border-left: 6px solid var(--success);">
+                <div class="roi-icon" style="color: var(--success);">💵</div>
+                <div class="roi-value">$2.4B+</div>
+                <div class="roi-label">Projected Annual Savings</div>
+                <div class="roi-description">99.6% fraud detection rate</div>
+            </div>
+
+            <!-- Prevented Fraud -->
+            <div class="roi-card" style="background: linear-gradient(135deg, #fef3c7 0%, #fde68a 100%); border-left: 6px solid var(--accent);">
+                <div class="roi-icon" style="color: var(--accent);">🛡️</div>
+                <div class="roi-value">$12.0B</div>
+                <div class="roi-label">Detected Fraud Amount</div>
+                <div class="roi-description">From potential $12.06B total</div>
+            </div>
+
+            <!-- ROI Percentage -->
+            <div class="roi-card" style="background: linear-gradient(135deg, #dbeafe 0%, #bfdbfe 100%); border-left: 6px solid #3b82f6;">
+                <div class="roi-icon" style="color: #3b82f6;">📈</div>
+                <div class="roi-value">99.5%</div>
+                <div class="roi-label">ROI Improvement</div>
+                <div class="roi-description">Nearly eliminate fraud losses</div>
+            </div>
+
+            <!-- Optimal Threshold -->
+            <div class="roi-card" style="background: linear-gradient(135deg, #e0e7ff 0%, #c7d2fe 100%); border-left: 6px solid #8b5cf6;">
+                <div class="roi-icon" style="color: #8b5cf6;">⚙️</div>
+                <div class="roi-value">0.1</div>
+                <div class="roi-label">Optimal Threshold</div>
+                <div class="roi-description">Maximizes net savings</div>
+            </div>
+        </div>
+
+        <!-- Threshold Optimization Analysis -->
+        <div class="card">
+            <h2 class="card-title">Threshold Optimization Strategy</h2>
+            <p style="color: #666; margin-bottom: 30px;">
+                Business analysis across 9 different thresholds identified <strong style="color: var(--primary);">0.1</strong> as the optimal decision threshold, maximizing net savings while maintaining excellent precision.
+            </p>
+
+            <!-- Threshold Comparison Table -->
+            <div class="threshold-table">
+                <div class="threshold-header">
+                    <div>Threshold</div>
+                    <div>Precision</div>
+                    <div>Recall</div>
+                    <div>F1 Score</div>
+                    <div>Net Savings</div>
+                    <div>Status</div>
+                </div>
+
+                <!-- Optimal Row (0.1) -->
+                <div class="threshold-row optimal">
+                    <div class="threshold-value">0.1</div>
+                    <div>84.7%</div>
+                    <div>99.8%</div>
+                    <div>0.916</div>
+                    <div class="savings-value">$2,405,995,453</div>
+                    <div><span class="optimal-badge">🏆 OPTIMAL</span></div>
+                </div>
+
+                <!-- Other Thresholds -->
+                <div class="threshold-row">
+                    <div class="threshold-value">0.2</div>
+                    <div>86.0%</div>
+                    <div>99.7%</div>
+                    <div>0.924</div>
+                    <div class="savings-value">$2,404,527,776</div>
+                    <div><span class="badge-good">Good</span></div>
+                </div>
+
+                <div class="threshold-row">
+                    <div class="threshold-value">0.3</div>
+                    <div>87.0%</div>
+                    <div>99.7%</div>
+                    <div>0.929</div>
+                    <div class="savings-value">$2,404,527,986</div>
+                    <div><span class="badge-good">Good</span></div>
+                </div>
+
+                <div class="threshold-row">
+                    <div class="threshold-value">0.5</div>
+                    <div>88.2%</div>
+                    <div>99.6%</div>
+                    <div>0.936</div>
+                    <div class="savings-value">$2,403,060,279</div>
+                    <div><span class="badge-fair">Fair</span></div>
+                </div>
+
+                <div class="threshold-row">
+                    <div class="threshold-value">0.7</div>
+                    <div>89.5%</div>
+                    <div>99.5%</div>
+                    <div>0.942</div>
+                    <div class="savings-value">$2,398,656,657</div>
+                    <div><span class="badge-fair">Fair</span></div>
+                </div>
+
+                <div class="threshold-row">
+                    <div class="threshold-value">0.9</div>
+                    <div>91.3%</div>
+                    <div>99.1%</div>
+                    <div>0.951</div>
+                    <div class="savings-value">$2,391,317,180</div>
+                    <div><span class="badge-low">Lower</span></div>
+                </div>
+            </div>
+
+            <div class="insight-box" style="margin-top: 30px;">
+                <strong>💡 Strategic Insight:</strong> While higher thresholds (0.9) achieve better precision (91.3%), the 0.1 threshold maximizes absolute dollar savings by catching 99.8% of fraud cases with only a modest increase in false positives. Each $1 spent investigating false positives saves $815,593 in detected fraud.
+            </div>
+        </div>
+
+        <!-- Cost-Benefit Breakdown -->
+        <div class="card">
+            <h2 class="card-title">Cost-Benefit Analysis</h2>
+            <p style="color: #666; margin-bottom: 30px;">
+                Detailed financial breakdown at optimal threshold showing massive positive ROI from fraud prevention.
+            </p>
+
+            <div style="display: grid; grid-template-columns: repeat(auto-fit, minmax(280px, 1fr)); gap: 24px;">
+                <!-- Detected Fraud -->
+                <div class="cost-card gain">
+                    <div class="cost-header">
+                        <span class="cost-icon">✅</span>
+                        <span class="cost-title">Detected Fraud</span>
+                    </div>
+                    <div class="cost-amount gain">+$2,405,998,403</div>
+                    <div class="cost-details">
+                        <div class="cost-detail-item">
+                            <span>True Positives:</span>
+                            <span>1,639 cases</span>
+                        </div>
+                        <div class="cost-detail-item">
+                            <span>Detection Rate:</span>
+                            <span>99.8%</span>
+                        </div>
+                        <div class="cost-detail-item">
+                            <span>Avg Per Case:</span>
+                            <span>$1,467,967</span>
+                        </div>
+                    </div>
+                </div>
+
+                <!-- Missed Fraud -->
+                <div class="cost-card loss">
+                    <div class="cost-header">
+                        <span class="cost-icon">⚠️</span>
+                        <span class="cost-title">Missed Fraud</span>
+                    </div>
+                    <div class="cost-amount loss">-$5,871,869</div>
+                    <div class="cost-details">
+                        <div class="cost-detail-item">
+                            <span>False Negatives:</span>
+                            <span>4 cases</span>
+                        </div>
+                        <div class="cost-detail-item">
+                            <span>Miss Rate:</span>
+                            <span>0.2%</span>
+                        </div>
+                        <div class="cost-detail-item">
+                            <span>Avg Per Case:</span>
+                            <span>$1,467,967</span>
+                        </div>
+                    </div>
+                </div>
+
+                <!-- Investigation Costs -->
+                <div class="cost-card expense">
+                    <div class="cost-header">
+                        <span class="cost-icon">🔍</span>
+                        <span class="cost-title">Investigation Costs</span>
+                    </div>
+                    <div class="cost-amount expense">-$2,950</div>
+                    <div class="cost-details">
+                        <div class="cost-detail-item">
+                            <span>False Positives:</span>
+                            <span>295 cases</span>
+                        </div>
+                        <div class="cost-detail-item">
+                            <span>Cost Per Case:</span>
+                            <span>$10</span>
+                        </div>
+                        <div class="cost-detail-item">
+                            <span>FP Rate:</span>
+                            <span>0.02%</span>
+                        </div>
+                    </div>
+                </div>
+
+                <!-- Net Savings -->
+                <div class="cost-card total">
+                    <div class="cost-header">
+                        <span class="cost-icon">💰</span>
+                        <span class="cost-title">Net Annual Savings</span>
+                    </div>
+                    <div class="cost-amount total">$2,405,995,453</div>
+                    <div class="cost-details">
+                        <div class="cost-detail-item">
+                            <span>Profit Margin:</span>
+                            <span>99.997%</span>
+                        </div>
+                        <div class="cost-detail-item">
+                            <span>Cost Efficiency:</span>
+                            <span>815,593:1</span>
+                        </div>
+                        <div class="cost-detail-item">
+                            <span>ROI:</span>
+                            <span>99.5%</span>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+
+        <!-- Fraud Detection vs False Positive Trade-off -->
+        <div class="card">
+            <h2 class="card-title">Detection Rate vs Investigation Load</h2>
+            <p style="color: #666; margin-bottom: 30px;">
+                Visualization of the trade-off between fraud detection and false positive investigation burden across different thresholds.
+            </p>
+
+            <div class="tradeoff-chart">
+                <div class="chart-bars">
+                    <!-- Threshold 0.1 -->
+                    <div class="chart-bar-group">
+                        <div class="chart-label">0.1</div>
+                        <div class="chart-bars-container">
+                            <div class="chart-bar detected" style="height: 99.8%;" title="99.8% Detected">
+                                <span class="bar-value">1,639</span>
+                            </div>
+                            <div class="chart-bar fp" style="height: 18%;" title="295 False Positives">
+                                <span class="bar-value">295</span>
+                            </div>
+                        </div>
+                    </div>
+
+                    <!-- Threshold 0.3 -->
+                    <div class="chart-bar-group">
+                        <div class="chart-label">0.3</div>
+                        <div class="chart-bars-container">
+                            <div class="chart-bar detected" style="height: 99.7%;" title="99.7% Detected">
+                                <span class="bar-value">1,638</span>
+                            </div>
+                            <div class="chart-bar fp" style="height: 15%;" title="245 False Positives">
+                                <span class="bar-value">245</span>
+                            </div>
+                        </div>
+                    </div>
+
+                    <!-- Threshold 0.5 -->
+                    <div class="chart-bar-group">
+                        <div class="chart-label">0.5</div>
+                        <div class="chart-bars-container">
+                            <div class="chart-bar detected" style="height: 99.6%;" title="99.6% Detected">
+                                <span class="bar-value">1,637</span>
+                            </div>
+                            <div class="chart-bar fp" style="height: 13%;" title="219 False Positives">
+                                <span class="bar-value">219</span>
+                            </div>
+                        </div>
+                    </div>
+
+                    <!-- Threshold 0.7 -->
+                    <div class="chart-bar-group">
+                        <div class="chart-label">0.7</div>
+                        <div class="chart-bars-container">
+                            <div class="chart-bar detected" style="height: 99.5%;" title="99.5% Detected">
+                                <span class="bar-value">1,634</span>
+                            </div>
+                            <div class="chart-bar fp" style="height: 12%;" title="191 False Positives">
+                                <span class="bar-value">191</span>
+                            </div>
+                        </div>
+                    </div>
+
+                    <!-- Threshold 0.9 -->
+                    <div class="chart-bar-group">
+                        <div class="chart-label">0.9</div>
+                        <div class="chart-bars-container">
+                            <div class="chart-bar detected" style="height: 99.1%;" title="99.1% Detected">
+                                <span class="bar-value">1,629</span>
+                            </div>
+                            <div class="chart-bar fp" style="height: 9%;" title="155 False Positives">
+                                <span class="bar-value">155</span>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+
+                <div class="chart-legend">
+                    <div class="legend-item">
+                        <div class="legend-color" style="background: var(--success);"></div>
+                        <span>Fraud Cases Detected</span>
+                    </div>
+                    <div class="legend-item">
+                        <div class="legend-color" style="background: #f59e0b;"></div>
+                        <span>False Positives (Investigation Load)</span>
+                    </div>
+                </div>
+            </div>
+        </div>
+
+        <!-- Implementation Roadmap -->
+        <div class="card">
+            <h2 class="card-title">Implementation Roadmap</h2>
+            <p style="color: #666; margin-bottom: 30px;">
+                Phased approach to deploying fraud detection system for maximum business impact and minimal disruption.
+            </p>
+
+            <div class="roadmap">
+                <!-- Phase 1 -->
+                <div class="roadmap-phase">
+                    <div class="phase-timeline">
+                        <div class="phase-marker"></div>
+                        <div class="phase-duration">Month 1</div>
+                    </div>
+                    <div class="phase-content">
+                        <h3>Phase 1: Foundation</h3>
+                        <div class="phase-milestone">🎯 Deploy Model to Production</div>
+                        <ul class="phase-tasks">
+                            <li>Set up real-time scoring infrastructure</li>
+                            <li>Implement automated alerts (>80% fraud probability)</li>
+                            <li>Train fraud investigation team on new outputs</li>
+                            <li>Establish escalation procedures</li>
+                        </ul>
+                        <div class="phase-impact">Expected Savings: <strong>$200M+/month</strong></div>
+                    </div>
+                </div>
+
+                <!-- Phase 2 -->
+                <div class="roadmap-phase">
+                    <div class="phase-timeline">
+                        <div class="phase-marker"></div>
+                        <div class="phase-duration">Months 2-3</div>
+                    </div>
+                    <div class="phase-content">
+                        <h3>Phase 2: Process Integration</h3>
+                        <div class="phase-milestone">⚙️ Optimize Operations</div>
+                        <ul class="phase-tasks">
+                            <li>Implement dynamic transaction limits</li>
+                            <li>Deploy enhanced monitoring for TRANSFER/CASH_OUT</li>
+                            <li>Set up A/B testing framework</li>
+                            <li>Create customer communication protocols</li>
+                        </ul>
+                        <div class="phase-impact">Efficiency Gain: <strong>60% reduction</strong> in manual reviews</div>
+                    </div>
+                </div>
+
+                <!-- Phase 3 -->
+                <div class="roadmap-phase">
+                    <div class="phase-timeline">
+                        <div class="phase-marker"></div>
+                        <div class="phase-duration">Months 4-6</div>
+                    </div>
+                    <div class="phase-content">
+                        <h3>Phase 3: Advanced Features</h3>
+                        <div class="phase-milestone">🚀 Scale & Enhance</div>
+                        <ul class="phase-tasks">
+                            <li>Deploy device fingerprinting & geolocation</li>
+                            <li>Implement network analysis for fraud rings</li>
+                            <li>Set up automated model retraining</li>
+                            <li>Deploy customer behavior profiling</li>
+                        </ul>
+                        <div class="phase-impact">Detection Improvement: <strong>+5%</strong> catch rate</div>
+                    </div>
+                </div>
+
+                <!-- Phase 4 -->
+                <div class="roadmap-phase">
+                    <div class="phase-timeline">
+                        <div class="phase-marker"></div>
+                        <div class="phase-duration">Months 7-12</div>
+                    </div>
+                    <div class="phase-content">
+                        <h3>Phase 4: AI Enhancement</h3>
+                        <div class="phase-milestone">🤖 Next-Gen Intelligence</div>
+                        <ul class="phase-tasks">
+                            <li>Deploy deep learning for sequential patterns</li>
+                            <li>Implement consortium data sharing</li>
+                            <li>Deploy AI investigation tools</li>
+                            <li>Create predictive lifetime fraud scores</li>
+                        </ul>
+                        <div class="phase-impact">Future-Ready: <strong>Sustained</strong> competitive advantage</div>
+                    </div>
+                </div>
+            </div>
+        </div>
+
+        <!-- Key Success Metrics -->
+        <div class="card" style="background: linear-gradient(135deg, #f0fdf4 0%, #dcfce7 100%); border: 2px solid var(--primary);">
+            <h2 class="card-title">Success Metrics & KPIs</h2>
+            
+            <div class="kpi-grid">
+                <!-- Financial KPIs -->
+                <div class="kpi-section">
+                    <h3>💰 Financial KPIs</h3>
+                    <div class="kpi-item">
+                        <span class="kpi-label">Fraud Losses Prevented</span>
+                        <span class="kpi-value">$2.4B+ annually</span>
+                    </div>
+                    <div class="kpi-item">
+                        <span class="kpi-label">Cost per Transaction Reviewed</span>
+                        <span class="kpi-value">&lt;$2</span>
+                    </div>
+                    <div class="kpi-item">
+                        <span class="kpi-label">Return on Investment</span>
+                        <span class="kpi-value">&gt;300% within 12mo</span>
+                    </div>
+                </div>
+
+                <!-- Operational KPIs -->
+                <div class="kpi-section">
+                    <h3>⚙️ Operational KPIs</h3>
+                    <div class="kpi-item">
+                        <span class="kpi-label">Model Precision Rate</span>
+                        <span class="kpi-value">&gt;85%</span>
+                    </div>
+                    <div class="kpi-item">
+                        <span class="kpi-label">Model Recall Rate</span>
+                        <span class="kpi-value">&gt;99%</span>
+                    </div>
+                    <div class="kpi-item">
+                        <span class="kpi-label">False Positive Rate</span>
+                        <span class="kpi-value">&lt;5%</span>
+                    </div>
+                </div>
+
+                <!-- Technical KPIs -->
+                <div class="kpi-section">
+                    <h3>🔧 Technical KPIs</h3>
+                    <div class="kpi-item">
+                        <span class="kpi-label">Detection Speed</span>
+                        <span class="kpi-value">&lt;100ms per txn</span>
+                    </div>
+                    <div class="kpi-item">
+                        <span class="kpi-label">System Uptime</span>
+                        <span class="kpi-value">&gt;99.9%</span>
+                    </div>
+                    <div class="kpi-item">
+                        <span class="kpi-label">Model Drift Detection</span>
+                        <span class="kpi-value">&lt;5% monthly</span>
+                    </div>
+                </div>
+
+                <!-- Customer KPIs -->
+                <div class="kpi-section">
+                    <h3>👥 Customer KPIs</h3>
+                    <div class="kpi-item">
+                        <span class="kpi-label">Transaction Friction</span>
+                        <span class="kpi-value">&lt;1% additional verification</span>
+                    </div>
+                    <div class="kpi-item">
+                        <span class="kpi-label">Customer Satisfaction</span>
+                        <span class="kpi-value">&gt;4.0/5.0</span>
+                    </div>
+                    <div class="kpi-item">
+                        <span class="kpi-label">Average Resolution Time</span>
+                        <span class="kpi-value">&lt;30 minutes</span>
+                    </div>
+                </div>
+            </div>
+        </div>
+
+        <!-- Competitive Advantage -->
+        <div class="card">
+            <h2 class="card-title">Strategic Business Value</h2>
+            
+            <div class="value-grid">
+                <div class="value-card">
+                    <div class="value-icon">🛡️</div>
+                    <h3>Risk Mitigation</h3>
+                    <p>Reduce fraud losses by 99.5%, protecting customer trust and brand reputation while ensuring regulatory compliance.</p>
+                </div>
+
+                <div class="value-card">
+                    <div class="value-icon">⚡</div>
+                    <h3>Operational Efficiency</h3>
+                    <p>Automate 93.4% of transactions with normal processing, reducing manual review workload by 60%.</p>
+                </div>
+
+                <div class="value-card">
+                    <div class="value-icon">📊</div>
+                    <h3>Data-Driven Insights</h3>
+                    <p>Leverage 6.3M transaction patterns to continuously improve fraud detection and customer experience.</p>
+                </div>
+
+                <div class="value-card">
+                    <div class="value-icon">🚀</div>
+                    <h3>Competitive Edge</h3>
+                    <p>Industry-leading fraud detection with 0.9995 AUC-ROC positions company as fintech security leader.</p>
+                </div>
+            </div>
+        </div>
+
+    </div>
+
+    <!-- Custom Styles for Business Page -->
+    <style>
+        .roi-card {
+            border-radius: 16px;
+            padding: 28px;
+            text-align: center;
+            box-shadow: 0 10px 30px rgba(0, 0, 0, 0.08);
+            transition: all 0.3s ease;
+        }
+
+        .roi-card:hover {
+            transform: translateY(-8px);
+            box-shadow: 0 20px 40px rgba(0, 0, 0, 0.12);
+        }
+
+        .roi-icon {
+            font-size: 2.5rem;
+            margin-bottom: 12px;
+        }
+
+        .roi-value {
+            font-family: 'Playfair Display', serif;
+            font-size: 2.75rem;
+            font-weight: 800;
+            color: var(--primary);
+            margin-bottom: 8px;
+            letter-spacing: -1px;
+        }
+
+        .roi-label {
+            font-size: 0.95rem;
+            color: var(--text);
+            font-weight: 700;
+            margin-bottom: 6px;
+        }
+
+        .roi-description {
+            font-size: 0.8rem;
+            color: #666;
+            font-weight: 500;
+        }
+
+        .threshold-table {
+            background: white;
+            border-radius: 12px;
+            overflow: hidden;
+            box-shadow: 0 2px 12px rgba(0, 0, 0, 0.04);
+        }
+
+        .threshold-header {
+            display: grid;
+            grid-template-columns: 100px 1fr 1fr 1fr 1.5fr 1fr;
+            gap: 12px;
+            padding: 16px 20px;
+            background: var(--primary);
+            color: white;
+            font-weight: 700;
+            font-size: 0.875rem;
+            text-transform: uppercase;
+            letter-spacing: 0.5px;
+        }
+
+        .threshold-row {
+            display: grid;
+            grid-template-columns: 100px 1fr 1fr 1fr 1.5fr 1fr;
+            gap: 12px;
+            padding: 18px 20px;
+            border-bottom: 1px solid #f1f5f9;
+            transition: all 0.3s ease;
+            align-items: center;
+        }
+
+        .threshold-row:hover {
+            background: #f8fafc;
+        }
+
+        .threshold-row.optimal {
+            background: linear-gradient(135deg, #fef3c7 0%, #fde68a 100%);
+            border-left: 4px solid var(--accent);
+        }
+
+        .threshold-value {
+            font-family: 'Playfair Display', serif;
+            font-size: 1.5rem;
+            font-weight: 700;
+            color: var(--primary);
+        }
+
+        .savings-value {
+            font-family: 'Playfair Display', serif;
+            font-weight: 700;
+            color: var(--success);
+        }
+
+        .optimal-badge {
+            display: inline-block;
+            background: var(--accent);
+            color: white;
+            padding: 6px 14px;
+            border-radius: 50px;
+            font-size: 0.75rem;
+            font-weight: 700;
+            letter-spacing: 0.5px;
+        }
+
+        .badge-good {
+            display: inline-block;
+            background: var(--success);
+            color: white;
+            padding: 6px 14px;
+            border-radius: 50px;
+            font-size: 0.75rem;
+            font-weight: 600;
+        }
+
+        .badge-fair {
+            display: inline-block;
+            background: #3b82f6;
+            color: white;
+            padding: 6px 14px;
+            border-radius: 50px;
+            font-size: 0.75rem;
+            font-weight: 600;
+        }
+
+        .badge-low {
+            display: inline-block;
+            background: #f59e0b;
+            color: white;
+            padding: 6px 14px;
+            border-radius: 50px;
+            font-size: 0.75rem;
+            font-weight: 600;
+        }
+
+        .cost-card {
+            background: white;
+            border-radius: 16px;
+            padding: 24px;
+            box-shadow: 0 4px 20px rgba(0, 0, 0, 0.06);
+            transition: transform 0.3s ease;
+        }
+
+        .cost-card:hover {
+            transform: translateY(-5px);
+        }
+
+        .cost-card.gain {
+            border-top: 4px solid var(--success);
+        }
+
+        .cost-card.loss {
+            border-top: 4px solid var(--danger);
+        }
+
+        .cost-card.expense {
+            border-top: 4px solid #f59e0b;
+        }
+
+        .cost-card.total {
+            border-top: 4px solid var(--accent);
+            background: linear-gradient(135deg, #fef3c7 0%, #fde68a 100%);
+        }
+
+        .cost-header {
+            display: flex;
+            align-items: center;
+            gap: 12px;
+            margin-bottom: 16px;
+        }
+
+        .cost-icon {
+            font-size: 1.75rem;
+        }
+
+        .cost-title {
+            font-weight: 700;
+            color: var(--primary);
+            font-size: 1rem;
+        }
+
+        .cost-amount {
+            font-family: 'Playfair Display', serif;
+            font-size: 2rem;
+            font-weight: 800;
+            margin-bottom: 16px;
+        }
+
+        .cost-amount.gain {
+            color: var(--success);
+        }
+
+        .cost-amount.loss {
+            color: var(--danger);
+        }
+
+        .cost-amount.expense {
+            color: #f59e0b;
+        }
+
+        .cost-amount.total {
+            color: var(--accent);
+        }
+
+        .cost-details {
+            display: flex;
+            flex-direction: column;
+            gap: 8px;
+        }
+
+        .cost-detail-item {
+            display: flex;
+            justify-content: space-between;
+            font-size: 0.875rem;
+            padding: 8px 0;
+            border-top: 1px solid #f1f5f9;
+        }
+
+        .cost-detail-item span:first-child {
+            color: #666;
+        }
+
+        .cost-detail-item span:last-child {
+            font-weight: 700;
+            color: var(--primary);
+        }
+
+        .tradeoff-chart {
+            margin: 30px 0;
+        }
+
+        .chart-bars {
+            display: flex;
+            justify-content: space-around;
+            align-items: flex-end;
+            height: 400px;
+            padding: 20px;
+            background: #f8fafc;
+            border-radius: 12px;
+            margin-bottom: 20px;
+        }
+
+        .chart-bar-group {
+            display: flex;
+            flex-direction: column;
+            align-items: center;
+            gap: 12px;
+            flex: 1;
+            max-width: 120px;
+        }
+
+        .chart-label {
+            font-weight: 700;
+            color: var(--primary);
+            font-size: 0.875rem;
+        }
+
+        .chart-bars-container {
+            display: flex;
+            gap: 8px;
+            height: 350px;
+            align-items: flex-end;
+        }
+
+        .chart-bar {
+            width: 40px;
+            border-radius: 6px 6px 0 0;
+            position: relative;
+            transition: all 0.5s ease;
+            display: flex;
+            align-items: flex-start;
+            justify-content: center;
+            padding-top: 8px;
+        }
+
+        .chart-bar:hover {
+            opacity: 0.8;
+        }
+
+        .chart-bar.detected {
+            background: var(--success);
+        }
+
+        .chart-bar.fp {
+            background: #f59e0b;
+        }
+
+        .bar-value {
+            font-size: 0.7rem;
+            font-weight: 700;
+            color: white;
+            writing-mode: vertical-rl;
+            transform: rotate(180deg);
+        }
+
+        .chart-legend {
+            display: flex;
+            justify-content: center;
+            gap: 32px;
+            margin-top: 20px;
+        }
+
+        .legend-item {
+            display: flex;
+            align-items: center;
+            gap: 8px;
+            font-size: 0.875rem;
+            color: #666;
+        }
+
+        .legend-color {
+            width: 20px;
+            height: 20px;
+            border-radius: 4px;
+        }
+
+        .roadmap {
+            display: flex;
+            flex-direction: column;
+            gap: 32px;
+        }
+
+        .roadmap-phase {
+            display: grid;
+            grid-template-columns: 150px 1fr;
+            gap: 24px;
+        }
+
+        .phase-timeline {
+            display: flex;
+            flex-direction: column;
+            align-items: center;
+            gap: 8px;
+        }
+
+        .phase-marker {
+            width: 60px;
+            height: 60px;
+            background: var(--primary);
+            border-radius: 50%;
+            border: 4px solid var(--accent);
+            box-shadow: 0 4px 12px rgba(0, 100, 0, 0.3);
+        }
+
+        .phase-duration {
+            font-weight: 700;
+            color: var(--primary);
+            font-size: 0.9rem;
+        }
+
+        .phase-content {
+            background: white;
+            border-radius: 12px;
+            padding: 24px;
+            box-shadow: 0 2px 12px rgba(0, 0, 0, 0.06);
+            border-left: 4px solid var(--primary);
+        }
+
+        .phase-content h3 {
+            font-family: 'Playfair Display', serif;
+            font-size: 1.5rem;
+            color: var(--primary);
+            margin-bottom: 12px;
+        }
+
+        .phase-milestone {
+            display: inline-block;
+            background: linear-gradient(135deg, var(--primary) 0%, var(--secondary) 100%);
+            color: white;
+            padding: 8px 16px;
+            border-radius: 50px;
+            font-size: 0.875rem;
+            font-weight: 600;
+            margin-bottom: 16px;
+        }
+
+        .phase-tasks {
+            list-style: none;
+            padding: 0;
+            margin: 16px 0;
+        }
+
+        .phase-tasks li {
+            padding: 8px 0 8px 24px;
+            position: relative;
+            color: #666;
+            font-size: 0.9rem;
+        }
+
+        .phase-tasks li::before {
+            content: '✓';
+            position: absolute;
+            left: 0;
+            color: var(--success);
+            font-weight: 700;
+        }
+
+        .phase-impact {
+            background: #f0fdf4;
+            padding: 12px 16px;
+            border-radius: 8px;
+            font-size: 0.9rem;
+            color: #065f46;
+            margin-top: 12px;
+        }
+
+        .phase-impact strong {
+            color: var(--primary);
+        }
+
+        .kpi-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(280px, 1fr));
+            gap: 24px;
+        }
+
+        .kpi-section {
+            background: white;
+            border-radius: 12px;
+            padding: 24px;
+        }
+
+        .kpi-section h3 {
+            font-family: 'Playfair Display', serif;
+            font-size: 1.25rem;
+            color: var(--primary);
+            margin-bottom: 16px;
+        }
+
+        .kpi-item {
+            display: flex;
+            justify-content: space-between;
+            padding: 12px 0;
+            border-bottom: 1px solid #f1f5f9;
+            font-size: 0.875rem;
+        }
+
+        .kpi-item:last-child {
+            border-bottom: none;
+        }
+
+        .kpi-label {
+            color: #666;
+        }
+
+        .kpi-value {
+            font-weight: 700;
+            color: var(--primary);
+        }
+
+        .value-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(260px, 1fr));
+            gap: 24px;
+        }
+
+        .value-card {
+            background: white;
+            border-radius: 16px;
+            padding: 28px;
+            text-align: center;
+            box-shadow: 0 4px 20px rgba(0, 0, 0, 0.06);
+            transition: transform 0.3s ease;
+        }
+
+        .value-card:hover {
+            transform: translateY(-5px);
+        }
+
+        .value-icon {
+            font-size: 3rem;
+            margin-bottom: 16px;
+        }
+
+        .value-card h3 {
+            font-family: 'Playfair Display', serif;
+            font-size: 1.25rem;
+            color: var(--primary);
+            margin-bottom: 12px;
+        }
+
+        .value-card p {
+            font-size: 0.9rem;
+            color: #666;
+            line-height: 1.6;
+        }
+
+        .insight-box {
+            background: linear-gradient(135deg, #fef3c7 0%, #fde68a 100%);
+            border-left: 4px solid var(--accent);
+            padding: 20px;
+            border-radius: 12px;
+            color: #92400e;
+            font-size: 0.95rem;
+            line-height: 1.6;
+        }
+
+        @media (max-width: 768px) {
+            .threshold-header,
+            .threshold-row {
+                grid-template-columns: 1fr;
+                gap: 8px;
+                text-align: left;
+            }
+
+            .roadmap-phase {
+                grid-template-columns: 1fr;
+            }
+        }
+    </style>
+{% endblock %}

@@ -1,0 +1,89 @@
+# Python
+__pycache__/
+*.py[cod]
+*$py.class
+*.so
+.Python
+*.egg-info/
+dist/
+build/
+*.egg
+
+# Virtual Environment
+venv/
+env/
+ENV/
+.venv
+venv.bak/
+
+# IDE - VSCode
+.vscode/
+*.code-workspace
+
+# IDE - PyCharm
+.idea/
+*.iml
+*.iws
+
+# IDE - Sublime
+*.sublime-project
+*.sublime-workspace
+
+# OS Files
+.DS_Store
+.DS_Store?
+._*
+.Spotlight-V100
+.Trashes
+ehthumbs.db
+Thumbs.db
+desktop.ini
+
+# Environment Variables
+.env
+.flaskenv
+*.env
+
+# Logs
+*.log
+logs/
+*.out
+
+# Testing
+.pytest_cache/
+.coverage
+htmlcov/
+.tox/
+.hypothesis/
+
+# Jupyter Notebook
+.ipynb_checkpoints
+*/.ipynb_checkpoints/*
+
+# Flask
+instance/
+.webassets-cache
+
+# Deployment
+*.deploy
+.railway/
+
+# Temporary files
+*.tmp
+*.temp
+*.swp
+*.swo
+*~
+
+# Database (if you add one later)
+*.db
+*.sqlite
+*.sqlite3
+
+# IMPORTANT: DO NOT IGNORE THESE!
+# We NEED model files for deployment
+# !model/*.pkl
+
+# IMPORTANT: DO NOT IGNORE THESE!
+# We NEED images for the website
+# !static/images/*

@@ -1,0 +1,540 @@
+{% extends "base.html" %}
+
+{% block title %}Data Analysis | Fraud Detection Insights{% endblock %}
+
+{% block content %}
+    <!-- Hero Section -->
+    <section class="hero">
+        <div class="hero-badge">📊 DATA INSIGHTS</div>
+        <h1>Fraud Pattern Analysis</h1>
+        <p>Deep dive into 6.3 million transactions revealing fraud patterns and behavioral insights</p>
+    </section>
+
+    <!-- Main Content -->
+    <div class="container">
+        
+        <!-- Key Statistics Cards -->
+        <div style="display: grid; grid-template-columns: repeat(auto-fit, minmax(280px, 1fr)); gap: 24px; margin-bottom: 50px;">
+            <!-- Total Transactions -->
+            <div class="stat-card">
+                <div class="stat-icon" style="background: linear-gradient(135deg, var(--primary) 0%, var(--secondary) 100%);">
+                    💳
+                </div>
+                <div class="stat-value">6.36M</div>
+                <div class="stat-label">Total Transactions</div>
+            </div>
+
+            <!-- Fraud Rate -->
+            <div class="stat-card">
+                <div class="stat-icon" style="background: linear-gradient(135deg, var(--danger) 0%, #dc2626 100%);">
+                    ⚠️
+                </div>
+                <div class="stat-value">0.129%</div>
+                <div class="stat-label">Fraud Rate</div>
+            </div>
+
+            <!-- Fraud Cases -->
+            <div class="stat-card">
+                <div class="stat-icon" style="background: linear-gradient(135deg, #f59e0b 0%, #d97706 100%);">
+                    🔍
+                </div>
+                <div class="stat-value">8,213</div>
+                <div class="stat-label">Fraud Cases</div>
+            </div>
+
+            <!-- Average Fraud Amount -->
+            <div class="stat-card">
+                <div class="stat-icon" style="background: var(--gold-gradient);">
+                    💰
+                </div>
+                <div class="stat-value">$1.47M</div>
+                <div class="stat-label">Avg Fraud Amount</div>
+            </div>
+        </div>
+
+        <!-- Class Distribution -->
+        <div class="card">
+            <h2 class="card-title">Transaction Distribution</h2>
+            <p style="color: #666; margin-bottom: 30px;">
+                Highly imbalanced dataset with only <strong style="color: var(--danger);">0.129%</strong> fraudulent transactions out of 6.36 million total transactions.
+            </p>
+
+            <!-- Visual Distribution Bar -->
+            <div style="margin-bottom: 30px;">
+                <div class="distribution-label">
+                    <span style="color: var(--success); font-weight: 600;">✓ Legitimate: 6,354,407 (99.87%)</span>
+                    <span style="color: var(--danger); font-weight: 600;">⚠ Fraud: 8,213 (0.13%)</span>
+                </div>
+                <div class="distribution-bar">
+                    <div class="distribution-segment" style="width: 99.87%; background: var(--success);">
+                        <span style="color: white; font-weight: 600; font-size: 0.875rem;">99.87%</span>
+                    </div>
+                    <div class="distribution-segment" style="width: 0.13%; background: var(--danger); min-width: 60px;">
+                        <span style="color: white; font-weight: 600; font-size: 0.75rem;">0.13%</span>
+                    </div>
+                </div>
+            </div>
+
+            <div class="insight-box">
+                <strong>💡 Key Insight:</strong> The extreme class imbalance required special handling techniques (SMOTE, threshold optimization) to achieve high fraud detection rates without overwhelming false positives.
+            </div>
+        </div>
+
+        <!-- Transaction Type Analysis -->
+        <div class="card">
+            <h2 class="card-title">Fraud by Transaction Type</h2>
+            <p style="color: #666; margin-bottom: 30px;">
+                Not all transaction types carry equal risk. <strong style="color: var(--danger);">TRANSFER</strong> and <strong style="color: var(--danger);">CASH_OUT</strong> transactions show significantly higher fraud rates.
+            </p>
+
+            <!-- Transaction Type Grid -->
+            <div class="transaction-grid">
+                <!-- TRANSFER - Highest Risk -->
+                <div class="transaction-item high-risk">
+                    <div class="transaction-header">
+                        <h3>TRANSFER</h3>
+                        <span class="risk-badge high">HIGH RISK</span>
+                    </div>
+                    <div class="transaction-stats">
+                        <div class="transaction-stat">
+                            <div class="stat-number">532,909</div>
+                            <div class="stat-text">Total Transactions</div>
+                        </div>
+                        <div class="transaction-stat">
+                            <div class="stat-number" style="color: var(--danger);">4,097</div>
+                            <div class="stat-text">Fraud Cases</div>
+                        </div>
+                        <div class="transaction-stat">
+                            <div class="stat-number" style="color: var(--danger); font-size: 1.75rem;">0.77%</div>
+                            <div class="stat-text">Fraud Rate</div>
+                        </div>
+                    </div>
+                    <div class="fraud-bar">
+                        <div class="fraud-fill" style="width: 77%; background: var(--danger);"></div>
+                    </div>
+                </div>
+
+                <!-- CASH_OUT - Medium Risk -->
+                <div class="transaction-item medium-risk">
+                    <div class="transaction-header">
+                        <h3>CASH_OUT</h3>
+                        <span class="risk-badge medium">MEDIUM RISK</span>
+                    </div>
+                    <div class="transaction-stats">
+                        <div class="transaction-stat">
+                            <div class="stat-number">2,237,500</div>
+                            <div class="stat-text">Total Transactions</div>
+                        </div>
+                        <div class="transaction-stat">
+                            <div class="stat-number" style="color: #f59e0b;">4,116</div>
+                            <div class="stat-text">Fraud Cases</div>
+                        </div>
+                        <div class="transaction-stat">
+                            <div class="stat-number" style="color: #f59e0b; font-size: 1.75rem;">0.18%</div>
+                            <div class="stat-text">Fraud Rate</div>
+                        </div>
+                    </div>
+                    <div class="fraud-bar">
+                        <div class="fraud-fill" style="width: 18%; background: #f59e0b;"></div>
+                    </div>
+                </div>
+
+                <!-- PAYMENT - No Risk -->
+                <div class="transaction-item low-risk">
+                    <div class="transaction-header">
+                        <h3>PAYMENT</h3>
+                        <span class="risk-badge low">NO RISK</span>
+                    </div>
+                    <div class="transaction-stats">
+                        <div class="transaction-stat">
+                            <div class="stat-number">2,151,495</div>
+                            <div class="stat-text">Total Transactions</div>
+                        </div>
+                        <div class="transaction-stat">
+                            <div class="stat-number" style="color: var(--success);">0</div>
+                            <div class="stat-text">Fraud Cases</div>
+                        </div>
+                        <div class="transaction-stat">
+                            <div class="stat-number" style="color: var(--success); font-size: 1.75rem;">0.00%</div>
+                            <div class="stat-text">Fraud Rate</div>
+                        </div>
+                    </div>
+                    <div class="fraud-bar">
+                        <div class="fraud-fill" style="width: 0%; background: var(--success);"></div>
+                    </div>
+                </div>
+
+                <!-- CASH_IN - No Risk -->
+                <div class="transaction-item low-risk">
+                    <div class="transaction-header">
+                        <h3>CASH_IN</h3>
+                        <span class="risk-badge low">NO RISK</span>
+                    </div>
+                    <div class="transaction-stats">
+                        <div class="transaction-stat">
+                            <div class="stat-number">1,399,284</div>
+                            <div class="stat-text">Total Transactions</div>
+                        </div>
+                        <div class="transaction-stat">
+                            <div class="stat-number" style="color: var(--success);">0</div>
+                            <div class="stat-text">Fraud Cases</div>
+                        </div>
+                        <div class="transaction-stat">
+                            <div class="stat-number" style="color: var(--success); font-size: 1.75rem;">0.00%</div>
+                            <div class="stat-text">Fraud Rate</div>
+                        </div>
+                    </div>
+                    <div class="fraud-bar">
+                        <div class="fraud-fill" style="width: 0%; background: var(--success);"></div>
+                    </div>
+                </div>
+
+                <!-- DEBIT - No Risk -->
+                <div class="transaction-item low-risk">
+                    <div class="transaction-header">
+                        <h3>DEBIT</h3>
+                        <span class="risk-badge low">NO RISK</span>
+                    </div>
+                    <div class="transaction-stats">
+                        <div class="transaction-stat">
+                            <div class="stat-number">41,432</div>
+                            <div class="stat-text">Total Transactions</div>
+                        </div>
+                        <div class="transaction-stat">
+                            <div class="stat-number" style="color: var(--success);">0</div>
+                            <div class="stat-text">Fraud Cases</div>
+                        </div>
+                        <div class="transaction-stat">
+                            <div class="stat-number" style="color: var(--success); font-size: 1.75rem;">0.00%</div>
+                            <div class="stat-text">Fraud Rate</div>
+                        </div>
+                    </div>
+                    <div class="fraud-bar">
+                        <div class="fraud-fill" style="width: 0%; background: var(--success);"></div>
+                    </div>
+                </div>
+            </div>
+
+            <div class="insight-box" style="margin-top: 30px;">
+                <strong>💡 Business Impact:</strong> Focus fraud prevention resources on TRANSFER (0.77% fraud rate) and CASH_OUT (0.18% fraud rate) transactions. PAYMENT, CASH_IN, and DEBIT transactions showed zero fraud in the dataset.
+            </div>
+        </div>
+
+        <!-- Key Fraud Patterns -->
+        <div class="card">
+            <h2 class="card-title">Critical Fraud Indicators</h2>
+            <p style="color: #666; margin-bottom: 30px;">
+                Analysis revealed distinct patterns that separate fraudulent from legitimate transactions.
+            </p>
+
+            <div class="pattern-grid">
+                <!-- Pattern 1: Balance Inconsistency -->
+                <div class="pattern-card">
+                    <div class="pattern-icon">⚖️</div>
+                    <h3>Balance Inconsistency</h3>
+                    <p><strong style="color: var(--danger);">99.16%</strong> of fraudulent transactions showed balance consistency (orig_balance_consistent = 1)</p>
+                    <div class="pattern-detail">
+                        <span class="pattern-label">Fraud Average:</span>
+                        <span class="pattern-value">$1,457,275</span>
+                    </div>
+                    <div class="pattern-detail">
+                        <span class="pattern-label">Normal Average:</span>
+                        <span class="pattern-value">-$23,142</span>
+                    </div>
+                </div>
+
+                <!-- Pattern 2: Transaction Amount -->
+                <div class="pattern-card">
+                    <div class="pattern-icon">💵</div>
+                    <h3>Transaction Amount</h3>
+                    <p>Fraudulent transactions average <strong style="color: var(--danger);">$1.47M</strong> — significantly higher than normal</p>
+                    <div class="pattern-detail">
+                        <span class="pattern-label">Fraud Average:</span>
+                        <span class="pattern-value">$1,467,967</span>
+                    </div>
+                    <div class="pattern-detail">
+                        <span class="pattern-label">Normal Average:</span>
+                        <span class="pattern-value">$178,197</span>
+                    </div>
+                </div>
+
+                <!-- Pattern 3: Rounded Amounts -->
+                <div class="pattern-card">
+                    <div class="pattern-icon">🎯</div>
+                    <h3>Rounded Amounts</h3>
+                    <p><strong style="color: var(--danger);">3.69%</strong> of fraud transactions have amounts rounded to nearest $1,000</p>
+                    <div class="pattern-detail">
+                        <span class="pattern-label">Fraud Rate:</span>
+                        <span class="pattern-value">3.69%</span>
+                    </div>
+                    <div class="pattern-detail">
+                        <span class="pattern-label">Normal Rate:</span>
+                        <span class="pattern-value">0.05%</span>
+                    </div>
+                </div>
+
+                <!-- Pattern 4: Destination Patterns -->
+                <div class="pattern-card">
+                    <div class="pattern-icon">🔄</div>
+                    <h3>Destination Irregularities</h3>
+                    <p>Fraud often shows <strong style="color: var(--danger);">destination balance inconsistencies</strong> where money "disappears"</p>
+                    <div class="pattern-detail">
+                        <span class="pattern-label">Common Pattern:</span>
+                        <span class="pattern-value">Dest unchanged</span>
+                    </div>
+                    <div class="pattern-detail">
+                        <span class="pattern-label">Impact:</span>
+                        <span class="pattern-value">High correlation</span>
+                    </div>
+                </div>
+            </div>
+        </div>
+
+        <!-- Statistical Insights -->
+        <div class="card" style="background: linear-gradient(135deg, #f0fdf4 0%, #dcfce7 100%); border: 2px solid var(--primary);">
+            <h2 class="card-title">Statistical Highlights</h2>
+            
+            <div style="display: grid; grid-template-columns: repeat(auto-fit, minmax(250px, 1fr)); gap: 24px;">
+                <div class="highlight-item">
+                    <div class="highlight-number" style="color: var(--primary);">6,362,620</div>
+                    <div class="highlight-text">Total Transactions Analyzed</div>
+                </div>
+
+                <div class="highlight-item">
+                    <div class="highlight-number" style="color: var(--danger);">$12.06B</div>
+                    <div class="highlight-text">Total Fraud Loss (if undetected)</div>
+                </div>
+
+                <div class="highlight-item">
+                    <div class="highlight-number" style="color: var(--accent);">99.16%</div>
+                    <div class="highlight-text">Fraud with Balance Consistency</div>
+                </div>
+
+                <div class="highlight-item">
+                    <div class="highlight-number" style="color: var(--primary);">78.6%</div>
+                    <div class="highlight-text">Feature Importance (Balance)</div>
+                </div>
+            </div>
+        </div>
+
+    </div>
+
+    <!-- Custom Styles for Analysis Page -->
+    <style>
+        .stat-card {
+            background: white;
+            border-radius: 16px;
+            padding: 30px;
+            text-align: center;
+            box-shadow: 0 10px 30px rgba(0, 100, 0, 0.08);
+            transition: transform 0.3s ease, box-shadow 0.3s ease;
+        }
+
+        .stat-card:hover {
+            transform: translateY(-5px);
+            box-shadow: 0 15px 40px rgba(0, 100, 0, 0.15);
+        }
+
+        .stat-icon {
+            width: 60px;
+            height: 60px;
+            margin: 0 auto 16px;
+            border-radius: 12px;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            font-size: 1.75rem;
+        }
+
+        .stat-value {
+            font-family: 'Playfair Display', serif;
+            font-size: 2.5rem;
+            font-weight: 700;
+            color: var(--primary);
+            margin-bottom: 8px;
+        }
+
+        .stat-label {
+            font-size: 0.875rem;
+            color: #666;
+            font-weight: 500;
+            text-transform: uppercase;
+            letter-spacing: 0.5px;
+        }
+
+        .distribution-label {
+            display: flex;
+            justify-content: space-between;
+            margin-bottom: 12px;
+            font-size: 0.95rem;
+        }
+
+        .distribution-bar {
+            height: 60px;
+            background: #f1f5f9;
+            border-radius: 12px;
+            overflow: hidden;
+            display: flex;
+        }
+
+        .distribution-segment {
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            transition: all 0.5s ease;
+        }
+
+        .insight-box {
+            background: linear-gradient(135deg, #fef3c7 0%, #fde68a 100%);
+            border-left: 4px solid var(--accent);
+            padding: 20px;
+            border-radius: 12px;
+            color: #92400e;
+            font-size: 0.95rem;
+            line-height: 1.6;
+        }
+
+        .transaction-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(320px, 1fr));
+            gap: 24px;
+        }
+
+        .transaction-item {
+            background: white;
+            border-radius: 16px;
+            padding: 24px;
+            box-shadow: 0 4px 20px rgba(0, 0, 0, 0.06);
+            transition: transform 0.3s ease;
+        }
+
+        .transaction-item:hover {
+            transform: translateY(-3px);
+        }
+
+        .transaction-header {
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            margin-bottom: 20px;
+        }
+
+        .transaction-header h3 {
+            font-family: 'Playfair Display', serif;
+            font-size: 1.5rem;
+            color: var(--primary);
+            margin: 0;
+        }
+
+        .transaction-stats {
+            display: grid;
+            grid-template-columns: repeat(3, 1fr);
+            gap: 16px;
+            margin-bottom: 16px;
+        }
+
+        .transaction-stat {
+            text-align: center;
+        }
+
+        .stat-number {
+            font-family: 'Playfair Display', serif;
+            font-size: 1.25rem;
+            font-weight: 700;
+            color: var(--primary);
+        }
+
+        .stat-text {
+            font-size: 0.75rem;
+            color: #666;
+            margin-top: 4px;
+        }
+
+        .fraud-bar {
+            height: 8px;
+            background: #f1f5f9;
+            border-radius: 4px;
+            overflow: hidden;
+        }
+
+        .fraud-fill {
+            height: 100%;
+            transition: width 1s ease;
+            border-radius: 4px;
+        }
+
+        .pattern-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(260px, 1fr));
+            gap: 24px;
+        }
+
+        .pattern-card {
+            background: white;
+            border-radius: 16px;
+            padding: 24px;
+            box-shadow: 0 4px 20px rgba(0, 0, 0, 0.06);
+            text-align: center;
+            transition: transform 0.3s ease;
+        }
+
+        .pattern-card:hover {
+            transform: translateY(-5px);
+        }
+
+        .pattern-icon {
+            font-size: 2.5rem;
+            margin-bottom: 16px;
+        }
+
+        .pattern-card h3 {
+            font-family: 'Playfair Display', serif;
+            font-size: 1.25rem;
+            color: var(--primary);
+            margin-bottom: 12px;
+        }
+
+        .pattern-card p {
+            font-size: 0.9rem;
+            color: #666;
+            margin-bottom: 20px;
+            line-height: 1.5;
+        }
+
+        .pattern-detail {
+            display: flex;
+            justify-content: space-between;
+            padding: 10px 0;
+            border-top: 1px solid #f1f5f9;
+            font-size: 0.875rem;
+        }
+
+        .pattern-label {
+            color: #666;
+            font-weight: 500;
+        }
+
+        .pattern-value {
+            color: var(--primary);
+            font-weight: 700;
+        }
+
+        .highlight-item {
+            text-align: center;
+            padding: 20px;
+        }
+
+        .highlight-number {
+            font-family: 'Playfair Display', serif;
+            font-size: 2.5rem;
+            font-weight: 700;
+            margin-bottom: 8px;
+        }
+
+        .highlight-text {
+            font-size: 0.9rem;
+            color: #065f46;
+            font-weight: 500;
+        }
+    </style>
+{% endblock %}
